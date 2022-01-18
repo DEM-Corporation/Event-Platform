@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "563366618488",
+    "firebase_url": "https://event-platform-c45a3.firebaseio.com",
+    "project_id": "event-platform-c45a3",
+    "storage_bucket": "event-platform-c45a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563366618488:android:a640afaffca3df6a2b548d",
+        "android_client_info": {
+          "package_name": "dem.xbitly.eventplatform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563366618488-aqpgokvsljglpu74jcl1sfith4e4ne9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcutf1yIzE20NfPsDg6BO6njG5EqGIFvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563366618488-aqpgokvsljglpu74jcl1sfith4e4ne9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

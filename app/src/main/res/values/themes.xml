@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="Theme.EventPlatform" parent="Theme.AppCompat.DayNight.NoActionBar">
+
+        <item name="android:fontFamily">@font/ubuntu</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+
+    </style>
+
+
+    //тема для Switch
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+
+        <item name="android:colorControlActivated">@color/blue</item>
+        <item name="android:colorControlNormal">@color/blue</item>
+        <item name="android:colorControlHighlight">@color/blue</item>
+
+    </style>
+
+    //тема для PopupMenu
+    <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
+
+        <item name="android:popupBackground">@drawable/popup_menu_background</item>
+
+    </style>
+
+</resources>

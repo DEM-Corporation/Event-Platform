@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/gray"
+    android:layout_height="match_parent"
+    tools:context=".activities.InternetErrorConnectionActivity">
+
+    <ImageView
+        android:id="@+id/erim"
+        android:layout_width="300dp"
+        android:layout_centerInParent="true"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_neutral_face_two_color"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/erim"
+        android:layout_centerHorizontal="true"
+        android:textSize="14sp"
+        android:text="@string/no_internet_connection"
+        android:textColor="#8D97F0"/>
+
+    <Button
+        android:id="@+id/btn_retry"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="@string/retry"
+        android:textColor="#2E40E3" />
+
+</RelativeLayout>

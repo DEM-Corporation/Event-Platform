@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
+    android:background="#fff"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/profile_image_shape"/>
+
+        <TextView
+            android:id="@+id/from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Ivan Ivanov"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_toEndOf="@+id/profile_image"
+            android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/event_name"
+        tools:text="Event"
+        android:layout_below="@+id/from"
+        android:layout_toEndOf="@+id/profile_image"
+        android:textSize="15sp"
+        android:layout_marginStart="10dp"
+        android:textColor="#606EED"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Date"
+        android:id="@+id/time_ago"
+        android:layout_below="@id/event_name"
+        android:layout_toEndOf="@id/profile_image"
+        android:layout_marginStart="10dp"
+        android:textSize="10sp"
+        android:textColor="#5A5858"/>
+
+
+    <Button
+        android:id="@+id/ill_go_btn"
+        android:layout_width="82dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@id/from"
+        android:background="@drawable/go_btn_bg"
+        android:text="I'll go!"
+        android:textSize="14sp" />
+
+
+</RelativeLayout>
