@@ -14,7 +14,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_posts_recycler"
             android:layout_width="match_parent"
-            android:background="#F7F7F7"
+            android:background="#f4f4f4"
             android:layout_height="match_parent"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

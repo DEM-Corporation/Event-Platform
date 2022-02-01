@@ -55,9 +55,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/profile_posts_recycler"
         android:layout_width="match_parent"
-        android:background="#F7F7F7"
+        android:background="#f4f4f4"
         android:layout_marginBottom="56dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="10dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
