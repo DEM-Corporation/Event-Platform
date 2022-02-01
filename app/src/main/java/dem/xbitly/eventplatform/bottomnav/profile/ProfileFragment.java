@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,10 +31,13 @@ import java.util.Objects;
 
 import dem.xbitly.eventplatform.R;
 import dem.xbitly.eventplatform.activities.InternetErrorConnectionActivity;
+import dem.xbitly.eventplatform.activities.MainActivity;
 import dem.xbitly.eventplatform.activities.SettingsActivity;
 import dem.xbitly.eventplatform.activities.StartActivity;
 import dem.xbitly.eventplatform.network.NetworkManager;
 import dem.xbitly.eventplatform.tape.TapeAdapter;
+import dem.xbitly.eventplatform.viewmodels.MembersViewModel;
+import dem.xbitly.eventplatform.viewmodels.ProfileViewModel;
 
 public class ProfileFragment extends Fragment {
 
@@ -41,9 +45,10 @@ public class ProfileFragment extends Fragment {
 
     private TextView profile_name;
 
-    private String username;
+    private ProfileViewModel viewModel;
 
-    private boolean isUpdateRV = true;
+    private String[] reviews;
+    private String[] invites;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,39 +60,31 @@ public class ProfileFragment extends Fragment {
         DatabaseReference ref = dBase.getReference("Users");
         profile_name = root.findViewById(R.id.profile_name);
         rv = root.findViewById(R.id.profile_posts_recycler);
-
-
-        ref.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {
+        viewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
+        viewModel.getReviews().observe(getActivity(), new Observer<String[]>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                username = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
-                profile_name.setText(username);
-
-                String[] sR = !Objects.requireNonNull(snapshot.child("myReviews").getValue().toString()).equals("") ? Objects.requireNonNull(snapshot.child("myReviews").getValue()).toString().split(",") : new String[0];
-                String[] sI = !Objects.requireNonNull(snapshot.child("myInvites").getValue().toString()).equals("") ? Objects.requireNonNull(snapshot.child("myInvites").getValue()).toString().split(",") : new String[0];
-                if(isUpdateRV) {
-
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext());
-                    linearLayoutManager.setReverseLayout(true);
-                    linearLayoutManager.setStackFromEnd(true);
-                    rv.setLayoutManager(linearLayoutManager);
-                    rv.setHasFixedSize(true);
-                    try {
-                        isUpdateRV = false;
-                        TapeAdapter tapeAdapter = new TapeAdapter(sR, sI, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), root.getContext(), getParentFragmentManager());
+            public void onChanged(String[] sstrs) {
+                reviews = sstrs;
+                viewModel.getInvites().observe(getActivity(), new Observer<String[]>() {
+                    @Override
+                    public void onChanged(String[] strs) {
+                        invites = strs;
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext());
+                        linearLayoutManager.setReverseLayout(true);
+                        linearLayoutManager.setStackFromEnd(true);
+                        rv.setLayoutManager(linearLayoutManager);
+                        rv.setHasFixedSize(true);
+                        TapeAdapter tapeAdapter = new TapeAdapter(reviews, invites, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), root.getContext(), getParentFragmentManager());
                         rv.setAdapter(tapeAdapter);
-                    } catch (Exception e){
-                        isUpdateRV = true;
                     }
-
-                }
-
+                });
             }
+        });
 
+        viewModel.getUserName().observe(getActivity(), new Observer<String>() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onChanged(String s) {
+                profile_name.setText(s);
             }
         });
 
@@ -122,4 +119,16 @@ public class ProfileFragment extends Fragment {
             Log.e("Connectivity Exception", e.getMessage());
         }
     }
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        viewModel.getUserName().observe(getActivity(), new Observer<String>() {
+//            @Override
+//            public void onChanged(String usrname) {
+//                username = usrname;
+//                profile_name.setText(username);
+//            }
+//        });
+//    }
 }

@@ -2,6 +2,8 @@ package dem.xbitly.eventplatform.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Context;
@@ -21,11 +23,14 @@ import java.util.Objects;
 import dem.xbitly.eventplatform.databinding.ActivityLoginBinding;
 import dem.xbitly.eventplatform.databinding.ActivityMembersBinding;
 import dem.xbitly.eventplatform.members.MembersAdapter;
+import dem.xbitly.eventplatform.viewmodels.MembersViewModel;
 
 public class MembersActivity extends AppCompatActivity {
 
     ActivityMembersBinding binding;
     String id[];
+
+    MembersViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +49,20 @@ public class MembersActivity extends AppCompatActivity {
             path = "PublicEvents";
         }
 
-        FirebaseDatabase.getInstance().getReference(path).child(getIntent().getStringExtra("eventID")).addValueEventListener(new ValueEventListener() {
+        viewModel = new ViewModelProvider(this).get(MembersViewModel.class);
+        viewModel.setPath(path);
+        viewModel.setEventID(getIntent().getStringExtra("eventID"));
+
+        viewModel.getIds().observe(this, new Observer<String>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String go = Objects.requireNonNull(snapshot.child("go").getValue()).toString();
+            public void onChanged(String go) {
                 id = go.split(",");
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MembersActivity.this);
                 binding.membersRv.setLayoutManager(linearLayoutManager);
                 MembersAdapter membersAdapter = new MembersAdapter(id);
                 binding.membersRv.setAdapter(membersAdapter);
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
         });
-
     }
 
     public void checkNetwork(){

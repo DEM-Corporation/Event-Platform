@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -28,7 +29,6 @@ import java.util.Objects;
 
 import dem.xbitly.eventplatform.comments.CommentAdapter;
 import dem.xbitly.eventplatform.databinding.ActivityCommentBinding;
-import dem.xbitly.eventplatform.network.NetworkManager;
 
 public class CommentActivity extends AppCompatActivity {
 
@@ -59,9 +59,7 @@ public class CommentActivity extends AppCompatActivity {
             public void onRefresh() {
                 checkNetwork();
                 binding.refreshComments.setRefreshing(true);
-                e = true;
                 ref.addValueEventListener(new ValueEventListener() {
-
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(e) {
@@ -75,8 +73,6 @@ public class CommentActivity extends AppCompatActivity {
                             CommentAdapter commentAdapter = new CommentAdapter(count, dBase, ref);
                             binding.commentsRecycler.setAdapter(commentAdapter);
                             e = false;
-                            binding.refreshComments.setRefreshing(false);
-
                         }
                     }
 
@@ -85,6 +81,7 @@ public class CommentActivity extends AppCompatActivity {
 
                     }
                 });
+                binding.refreshComments.setRefreshing(false);
 
             }
         });
@@ -139,6 +136,8 @@ public class CommentActivity extends AppCompatActivity {
                 });
             }
         });
+
+        e = true;
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -167,10 +166,7 @@ public class CommentActivity extends AppCompatActivity {
         binding.backFromCommentsBtn.setOnClickListener(view -> onBackPressed());
 
 
-
     }
-
-
 
     public void checkNetwork(){
         boolean connected = false;

@@ -1,0 +1,196 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 251658240 bytes for Failed to commit area from 0x0000000710e00000 to 0x000000071fe00000 of length 251658240.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (./src/hotspot/os/windows/os_windows.cpp:3301), pid=10212, tid=9664
+#
+# JRE version:  (11.0.10) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.10+0-b96-7249189, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: org.jetbrains.kotlin.cli.jvm.K2JVMCompiler -Xallow-no-source-files -classpath D:\Desktop\EventPlatformAppForUnior\app\build\intermediates\compile_and_runtime_not_namespaced_r_class_jar\debug\R.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\e9b4c2e0a427d6c525d224561ad2cac1\jetified-viewbinding-4.1.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\e1cafecc0bac87d4dc47ca4891dbfa03\navigation-ui-2.3.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\07aee23d651204251a597d40b6ca758c\material-1.4.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\9ba4698f7562e9991baa7f6cf8886c94\constraintlayout-2.0.4-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\7b8711a4d1c3f119a98d99168ba0fbbc\appcompat-1.4.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\4d0806c9c38ca8e2d8067ee1df2962a3\jetified-firebase-ui-database-4.3.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\7961cef02edad90082b2e2c262db0f3a\jetified-firebase-database-19.6.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\92a33e5c906e81f0df899826a89a022b\jetified-firebase-auth-21.0.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\9e381be29c90ea408244c9d5c8593b01\browser-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\76c3129ff44eeebe6b825b4b11a2f5d1\legacy-support-v4-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\fc8b8ec5423b5dde1cd61b850d8ba20b\legacy-support-core-ui-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\fc1745542fe166fa7d957cf6cc881607\swiperefreshlayout-1.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\031d6d657bbae5e2b4053df4286df6a7\jetified-places-2.4.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\d5ebb07df2e081005361c23cea2139f2\cardview-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\84af123f32ff6d74aaef9e6ad3ee2e91\coordinatorlayout-1.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\d8c3a68239741775db29b6007664c0a6\dynamicanimation-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\9d3814ca7f19d75f9c21872b05788946\navigation-fragment-2.3.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\664da700c6b53c7e57738630d97cbb3b\jetified-play-services-places-17.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\efd0fbffee61d345801d46483be0e7b0\jetified-play-services-maps-17.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\b6f751362b682b0c9d14aa559b7b9025\jetified-play-services-auth-20.0.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\da54a5279e0251c95ac89853ecee05ac\jetified-viewpager2-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\31cae2a051967f6e07de150e1c3c1924\jetified-play-services-location-18.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\60080671ed6c3bc43fa7043ef5affa0d\jetified-firebase-dynamic-links-20.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\0ea3c95e2b998bf39a9243a5f6cf217c\jetified-firebase-database-collection-17.0.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\3e19b393e294198540bd64b6c5df297c\jetified-play-services-auth-api-phone-18.0.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\d4b0a435aeb8d7e43f1868aa770a8d83\jetified-play-services-safetynet-17.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\a7c6cbd76b63d67d2afacf918b722d04\jetified-play-services-auth-base-18.0.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\fe48cfe415d0700feabe08b6058f88eb\jetified-play-services-base-18.0.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\15723d1d2f4985c84f2fcceb120558aa\jetified-play-services-places-placereport-17.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\7e6894448807c615ce97a551d1e9f173\jetified-firebase-auth-interop-20.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\0491bbc22c09f4f18124b2e892e44136\jetified-firebase-core-20.0.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\8fc316f513c9978db303e997923ec52a\jetified-firebase-analytics-20.0.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\96219a13113851ba0a2edf394d26c89c\jetified-play-services-measurement-api-20.0.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\0cf110b135a3ddf3ba4868b03fba6b0d\jetified-firebase-installations-17.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\cae3f36beef55ae96b40e51ea72627d0\jetified-firebase-common-20.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\f77fb44ad0b012296450cc05a2aed750\jetified-firebase-installations-interop-17.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\ec98a9808e483c1d9e2c7690db859428\jetified-play-services-tasks-18.0.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\90835838a341142c5501d3c4612355db\jetified-play-services-measurement-20.0.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\e2a0d38c26a7449ceb17bb038cd705ca\jetified-play-services-measurement-sdk-20.0.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\a8f67fe80d7829c6d9ac12ef0792dbf0\jetified-firebase-measurement-connector-19.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\6be97a2675fc0c3437d10591d32e6c3c\jetified-play-services-measurement-impl-20.0.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\37950a10c7ab3d2b800751ecd1b8562c\jetified-play-services-ads-identifier-18.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\580e04b1bf7a30ae120836711bdb7a19\jetified-play-services-measurement-sdk-api-20.0.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\4fecac7b0c0b4c8e3f59bb72b672df14\jetified-play-services-measurement-base-20.0.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\5aefa25d9f19913cf9a5189d55355677\jetified-play-services-stats-17.0.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\90d9cecad7708622eee64803b667eeb3\jetified-play-services-basement-18.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\e4692801149da325beb88d1c35bb544b\lifecycle-extensions-2.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\391113ab7cb2fa3b6ccfb234fb8893eb\fragment-1.3.6-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\695d4e3cec5d45e1f2c32311538d81dd\recyclerview-1.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\826f0ceaca244ed86c06f07d67f9c379\transition-1.3.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\861b5b5495ee7f6391cb5f8d885cc6f8\jetified-appcompat-resources-1.4.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\13576210732c7456018dd5869b4d5025\vectordrawable-animated-1.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\541b47b7dbcb4a28258653132b0e85fc\vectordrawable-1.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\19f637d6615b7827da378e33d78d4317\navigation-runtime-2.3.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\f109f3fa2e3c853920a6fe549546bac1\jetified-activity-1.2.4-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\ef6beb0dd6f014a90504e984383e3f5c\drawerlayout-1.1.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\4fdf09f3826d2a1c5974a31f30105517\viewpager-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\07d6eb8815607fd07adec23f935f0f1b\slidingpanelayout-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\f88bc61fde4c74b7a63c456577786ff6\customview-1.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\63e400c334fde10c84a03fa34e6967ac\legacy-support-core-utils-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\9b0c7ef6ce62183a70ce4535830c53f4\loader-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\4ada8f9d4f75c59142e83610a08f9671\media-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\d0731289b2b624bf563aac462284a77a\asynclayoutinflater-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\931bb7672dee7c39adc0d7071202d595\core-1.7.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\fd4ae27d60cbd931f3c43fcdb6bcd06b\jetified-firebase-ui-common-4.3.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\a7d1d937a438db3832236577b667304f\jetified-lifecycle-process-2.4.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\f6d42486563d0eed8eb2b66ff2d1a5fe\jetified-lifecycle-service-2.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\f6bb54add9de76c966968c1ece747d69\lifecycle-runtime-2.4.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\b097c6dc3f13ba511b682cb9525ce62b\cursoradapter-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\e415753203066bf09fb0397264be6e11\jetified-lifecycle-viewmodel-savedstate-2.3.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\6b9d06ea6a47e031bb45fce381d44ed8\jetified-savedstate-1.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\b810ce1f4a916c9d23072ec212db68b5\jetified-lifecycle-viewmodel-ktx-2.3.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\1117579d9174fb8e513d59dae260494e\lifecycle-viewmodel-2.3.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\3d92e94f96054817a8022e34a5eda2a5\jetified-firebase-components-17.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\2d70f10d46b326fd95623db77f49db24\versionedparcelable-1.1.1-api.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\androidx.collection\collection\1.1.0\1f27220b47669781457de0d600849a5de0e89909\collection-1.1.0.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\2e232b801050fcd35c3f2949c73405c9\localbroadcastmanager-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\200f9e63767389a9e0398adbd848a6a5\jetified-transport-backend-cct-2.3.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\a97148e5ab9c2b2d0f29f5d2cb13062a\jetified-transport-runtime-2.2.3-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\bcfcdf7858ad4e968ba0ad6484db4b28\interpolator-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\05f97ac4abcf097d066ebc6c8500e12e\jetified-lifecycle-livedata-ktx-2.3.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\617c7e6e50be13b7b18ac9969a8d23ee\lifecycle-livedata-2.3.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\19fdfcfaee95586dd2b7a0a778c83791\jetified-lifecycle-livedata-core-ktx-2.3.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\470aa02ff57360ca041a4b109eff9861\lifecycle-livedata-core-2.3.1-api.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\androidx.lifecycle\lifecycle-common\2.4.0\1fdb7349701e9cf2f0a69fc10642b6fef6bb3e12\lifecycle-common-2.4.0.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\3de51b2001a2feacd2ad40dfeabd2901\core-runtime-2.1.0-api.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\androidx.arch.core\core-common\2.1.0\b3152fc64428c9354344bd89848ecddc09b6f07e\core-common-2.1.0.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\90a41536017a2816666165fc05298aa8\navigation-common-2.3.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\dce368c54ffc291d666ab681650efb56\jetified-firebase-encoders-json-16.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\45d3d8a110abd8ed35ee0c30fbaf0864\documentfile-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\20653529d83beab4c66c6bd84bae9276\print-1.0.0-api.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\androidx.annotation\annotation\1.3.0\21f49f5f9b85fc49de712539f79123119740595\annotation-1.3.0.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\59534ce3febb0e712fff1a3c8d13b221\jetified-annotation-experimental-1.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\ddf2b47900fb7cccbf5ebe346b0bf15f\jetified-firebase-annotations-16.0.0.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\ecff4a4e17ac74aa27751f196aa63296\jetified-startup-runtime-1.0.0-api.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\androidx.constraintlayout\constraintlayout-solver\2.0.4\1f001d7db280a89a6c26b26a66eb064bb6d5efeb\constraintlayout-solver-2.0.4.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\19d4f944ad8567727ca2696dfb13d83e\jetified-kotlinx-coroutines-android-1.4.1.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\cad4d8687eaaf76d9b4d4c14af3e4e3f\jetified-kotlinx-coroutines-core-jvm-1.4.1.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\79426805cf0a6d363cf2d86e1eecde75\jetified-kotlin-stdlib-1.4.20.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\f6b4bc489ea351cbf28a45c8d49649d8\jetified-kotlin-stdlib-common-1.4.20.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\6c096802276b1569cae56d5f320f3eb6\jetified-annotations-13.0.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\d6ef497c0bc357ebfc52682da4392427\jetified-volley-1.1.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\c36f6dadd52e860f94e23adbb4510fd9\jetified-transport-api-2.2.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\b706a2ef2a246c52f462d5ea541c2887\jetified-dagger-2.27.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\5fa4a3f658d41228af1bfa5e70da6f11\jetified-javax.inject-1.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\4570d367ef255ca33dafd3e60d0b410d\jetified-auto-value-annotations-1.6.2.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\7e182a9d7f07916acbe53ec70330f607\jetified-gson-2.8.5.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\4eb336081677973fae766e5bec96ac21\jetified-placepicker-1.1.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\d9bd57e9e21d0645590f993f96020ab6\jetified-FancyToast-Android-0.1.8-api.jar;D:\Android\Sdk\platforms\android-31\android.jar;D:\Android\Sdk\build-tools\30.0.2\core-lambda-stubs.jar -d D:\Desktop\EventPlatformAppForUnior\app\build\tmp\kotlin-classes\debug -Xjava-source-roots=D:\Desktop\EventPlatformAppForUnior\app\build\generated\data_binding_base_class_source_out\debug\out,D:\Desktop\EventPlatformAppForUnior\app\build\generated\source\buildConfig\debug,D:\Desktop\EventPlatformAppForUnior\app\src\main\java -module-name app_debug -no-jdk -no-reflect -no-stdlib -Xcommon-sources=D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\ChatActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\CommentActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\CreateReviewActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\EventDescriptionActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\InternetErrorConnectionActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\LoginActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\MainActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\MembersActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\PrivateEventActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\ProfileSettings.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\PublicEventActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\RegisterActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\SettingsActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\StartActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\activities\UsersInvitationActivity.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\bottomnav\home\HomeFragment.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\bottomnav\map\MapFragment.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\bottomnav\messanger\MessengerFragment.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\bottomnav\profile\ProfileFragment.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\bottomsheet\BottomSheetEditDialog.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\bottomsheet\BottomSheetEventDialog.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\chat\Chat.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\chat\ChatAdapter.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\comments\Comment.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\comments\CommentAdapter.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\comments\CommentHolder.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\members\MembersAdapter.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\members\MembersHolder.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\Message\Message.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\Message\MessageAdapter.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\network\NetworkManager.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\tape\TapeAdapter.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\tape\TapeHolder.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\utils.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\viewmodels\MembersViewModel.java,D:\Desktop\EventPlatformAppForUnior\app\src\main\java\dem\xbitly\eventplatform\viewmodels\ProfileViewModel.java
+
+Host: AMD Ryzen 5 3500U with Radeon Vega Mobile Gfx  , 8 cores, 14G,  Windows 10 , 64 bit Build 22000 (10.0.22000.434)
+Time: Mon Jan 31 13:48:25 2022 RTZ 2 (зима) elapsed time: 0.015748 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001ba90932800):  JavaThread "Unknown thread" [_thread_in_vm, id=9664, stack(0x0000003e8d300000,0x0000003e8d400000)]
+
+Stack: [0x0000003e8d300000,0x0000003e8d400000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x5ecfaa]
+V  [jvm.dll+0x722bd5]
+V  [jvm.dll+0x72412d]
+V  [jvm.dll+0x7247e3]
+V  [jvm.dll+0x242928]
+V  [jvm.dll+0x5ea374]
+V  [jvm.dll+0x5df425]
+V  [jvm.dll+0x2fdebb]
+V  [jvm.dll+0x2fde2a]
+V  [jvm.dll+0x2fdd02]
+V  [jvm.dll+0x302bf6]
+V  [jvm.dll+0x34b2a3]
+V  [jvm.dll+0x34b9a6]
+V  [jvm.dll+0x34b3a3]
+V  [jvm.dll+0x2d8888]
+V  [jvm.dll+0x2d9a37]
+V  [jvm.dll+0x701737]
+V  [jvm.dll+0x702f2c]
+V  [jvm.dll+0x3587d9]
+V  [jvm.dll+0x6e4fae]
+V  [jvm.dll+0x3c0be3]
+V  [jvm.dll+0x3c2e91]
+C  [jli.dll+0x5373]
+C  [ucrtbase.dll+0x26c0c]
+C  [KERNEL32.DLL+0x154e0]
+C  [ntdll.dll+0x485b]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000001ba8e789150, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x000001ba9094a000 GCTaskThread "GC Thread#0" [stack: 0x0000003e8d400000,0x0000003e8d500000] [id=16420]
+  0x000001ba909a1000 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000003e8d500000,0x0000003e8d600000] [id=20672]
+  0x000001ba909a4800 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000003e8d600000,0x0000003e8d700000] [id=19564]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffa12669107]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000001ba9092e0b0] Heap_lock - owner thread: 0x000001ba90932800
+
+Heap address: 0x0000000710e00000, size: 3826 MB, Compressed Oops mode: Non-zero based: 0x0000000710e00000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (1 events):
+Event: 0.010 Loaded shared library D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\zip.dll
+
+
+Dynamic libraries:
+0x00007ff6e7060000 - 0x00007ff6e706a000 	D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\java.exe
+0x00007ffa8ad60000 - 0x00007ffa8af69000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffa89e10000 - 0x00007ffa89ecd000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffa88440000 - 0x00007ffa887b4000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffa889c0000 - 0x00007ffa88ad1000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffa4e660000 - 0x00007ffa4e679000 	D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\jli.dll
+0x00007ffa5a1f0000 - 0x00007ffa5a207000 	D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\VCRUNTIME140.dll
+0x00007ffa893b0000 - 0x00007ffa8955c000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffa7efe0000 - 0x00007ffa7f285000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22000.120_none_9d947278b86cc467\COMCTL32.dll
+0x00007ffa887c0000 - 0x00007ffa887e6000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffa89a00000 - 0x00007ffa89aa3000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffa89b80000 - 0x00007ffa89ba9000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffa88ae0000 - 0x00007ffa88bf2000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffa88920000 - 0x00007ffa889bd000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffa89ed0000 - 0x00007ffa89f01000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffa29cc0000 - 0x00007ffa29d5d000 	D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\msvcp140.dll
+0x00007ffa12380000 - 0x00007ffa12e4f000 	D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\server\jvm.dll
+0x00007ffa88e90000 - 0x00007ffa88f3e000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffa8ab30000 - 0x00007ffa8abce000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffa89cf0000 - 0x00007ffa89e10000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffa8abd0000 - 0x00007ffa8abd8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffa7efd0000 - 0x00007ffa7efd9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffa816c0000 - 0x00007ffa816f3000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffa81700000 - 0x00007ffa8170a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffa89ab0000 - 0x00007ffa89b1f000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffa87350000 - 0x00007ffa87368000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffa5d1b0000 - 0x00007ffa5d1c1000 	D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\verify.dll
+0x00007ffa85330000 - 0x00007ffa85551000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffa704c0000 - 0x00007ffa704f1000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffa88250000 - 0x00007ffa882cf000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffa50240000 - 0x00007ffa50269000 	D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\java.dll
+0x00007ffa77440000 - 0x00007ffa7744b000 	D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\jimage.dll
+0x00007ffa51080000 - 0x00007ffa51098000 	D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\zip.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22000.120_none_9d947278b86cc467;D:\Toolbox\apps\AndroidStudio\ch-0\203.7935034\jre\bin\server
+
+VM Arguments:
+java_command: org.jetbrains.kotlin.cli.jvm.K2JVMCompiler -Xallow-no-source-files -classpath D:\Desktop\EventPlatformAppForUnior\app\build\intermediates\compile_and_runtime_not_namespaced_r_class_jar\debug\R.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\e9b4c2e0a427d6c525d224561ad2cac1\jetified-viewbinding-4.1.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\e1cafecc0bac87d4dc47ca4891dbfa03\navigation-ui-2.3.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\07aee23d651204251a597d40b6ca758c\material-1.4.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\9ba4698f7562e9991baa7f6cf8886c94\constraintlayout-2.0.4-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\7b8711a4d1c3f119a98d99168ba0fbbc\appcompat-1.4.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\4d0806c9c38ca8e2d8067ee1df2962a3\jetified-firebase-ui-database-4.3.2-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\7961cef02edad90082b2e2c262db0f3a\jetified-firebase-database-19.6.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\92a33e5c906e81f0df899826a89a022b\jetified-firebase-auth-21.0.1-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\9e381be29c90ea408244c9d5c8593b01\browser-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\76c3129ff44eeebe6b825b4b11a2f5d1\legacy-support-v4-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\fc8b8ec5423b5dde1cd61b850d8ba20b\legacy-support-core-ui-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\fc1745542fe166fa7d957cf6cc881607\swiperefreshlayout-1.1.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\031d6d657bbae5e2b4053df4286df6a7\jetified-places-2.4.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\d5ebb07df2e081005361c23cea2139f2\cardview-1.0.0-api.jar;C:\Users\progr\.gradle\caches\transforms-2\files-2.1\84af123f32ff6d74aaef9e6ad3ee2e91\coordinatorlayout-1.1.0-api.jar;C:\Users\progr\.gradle\
+java_class_path (initial): C:\Users\progr\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-compiler-embeddable\1.3.72\fb72232c8fa977d5e07d33c43381ddbdc5edab6\kotlin-compiler-embeddable-1.3.72.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-reflect\1.3.72\86613e1a669a701b0c660bfd2af4f82a7ae11fca\kotlin-reflect-1.3.72.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.3.72\8032138f12c0180bc4e51fe139d4c52b46db6109\kotlin-stdlib-1.3.72.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-script-runtime\1.3.72\657d8d34d91e1964b4439378c09933e840bfe8d5\kotlin-script-runtime-1.3.72.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-daemon-embeddable\1.3.72\53bbaa2816dbf6bdb85f629451b1fcc88f2164d2\kotlin-daemon-embeddable-1.3.72.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\org.jetbrains.intellij.deps\trove4j\1.0.20181211\216c2e14b070f334479d800987affe4054cd563f\trove4j-1.0.20181211.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-common\1.3.72\6ca8bee3d88957eaaaef077c41c908c9940492d8\kotlin-stdlib-common-1.3.72.jar;C:\Users\progr\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\13.0\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\annotations-13.0.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 251658240                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 4011851776                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5836300                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122910970                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122910970                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=D:\JDKK\jdk
+JRE_HOME=D:\JDKK\jre
+PATH=C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\Common Files\Autodesk Shared\;D:\nvm;D:\Nvm;D:\NPM\;C:\Users\progr\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\progr\AppData\Local\Programs\Python\Python310\;C:\Users\progr\AppData\Local\Microsoft\WindowsApps;C:\MinGW\bin;C:\Users\progr\.dotnet\tools;D:\Microsoft VS Code\bin;D:\flutter\bin;D:\IntelliJ IDEA 2021.1.2\bin;C:\Users\progr\AppData\Local\Microsoft\WindowsApps;C:\Users\progr\spicetify-cli;D:\Vim\vim82;D:\platform-tools;D:\nvm;D:\Nvm;C:\Users\progr\AppData\Roaming\npm;C:\Users\progr\AppData\Local\GitHubDesktop\bin;D:\JDKK\jdk\bin;D:\JDKK\jre\bin;
+USERNAME=progr
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 22000 (10.0.22000.434)
+OS uptime: 6 days 16:54 hours
+
+CPU:total 8 (initial active 8) (8 cores per cpu, 2 threads per core) family 23 model 24 stepping 1 microcode 0x0, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, mmxext, 3dnowpref, lzcnt, sse4a, ht, tsc, tscinvbit, tscinv, bmi1, bmi2, adx, s
+
+Memory: 4k page, system-wide physical 15297M (3219M free)
+TotalPageFile size 19649M (AvailPageFile size 183M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 60M, peak: 300M
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.10+0-b96-7249189) for windows-amd64 JRE (11.0.10+0-b96-7249189), built on Mar 31 2021 21:44:00 by "builder" with MS VC++ 14.0 (VS2015)
+
+END.

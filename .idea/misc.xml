@@ -5,7 +5,12 @@
       <map>
         <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/drawable-v24/chat_info_header_shape.xml" value="0.3104166666666667" />
         <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/drawable-v24/profile_image_shape.xml" value="0.3104166666666667" />
+        <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/drawable/item_shape.xml" value="0.3104166666666667" />
         <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/layout/content_scrolling.xml" value="0.1296875" />
+        <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/layout/fragment_home.xml" value="0.23489583333333333" />
+        <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/layout/fragment_profile.xml" value="0.23489583333333333" />
+        <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/layout/item_invite.xml" value="0.23958333333333334" />
+        <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/layout/item_review.xml" value="0.3333333333333333" />
       </map>
     </option>
   </component>
