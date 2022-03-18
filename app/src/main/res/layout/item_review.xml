@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/item_shape"
     android:layout_marginLeft="7dp"
     android:layout_marginRight="7dp"
@@ -14,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
-        android:background="@color/white"
+        android:background="@color/menu_icon_background"
+        app:tint="@color/menu_icon_color"
         android:src="@drawable/ic_baseline_more_vert_24"
         android:layout_marginEnd="20dp" />
 
@@ -39,14 +41,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Ivan Ivanov"
-            android:textColor="@color/black"
+            android:textColor="@color/simple_text"
             android:textSize="16sp"/>
         <TextView
             android:id="@+id/time_and_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="01.01.2021, 12:00"
-            android:textColor="@color/black90"
+            android:textColor="@color/simple_text"
             android:textSize="12sp"/>
     </LinearLayout>
 
@@ -57,7 +59,7 @@
         android:layout_below="@+id/profile_image"
         android:layout_margin="20dp"
         android:textSize="14sp"
-        android:textColor="@color/black"
+        android:textColor="@color/simple_text"
         tools:text="There is a lot of text here. Text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text, text." />
 
     <LinearLayout
@@ -71,30 +73,36 @@
             android:id="@+id/like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_like" />
+            android:src="@drawable/ic_like"
+            android:background="@color/item_background"
+            app:tint="@color/like_btn_color"/>
         <ImageButton
             android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@drawable/ic_comment"/>
+            android:src="@drawable/ic_comment"
+            android:background="@color/item_background"
+            app:tint="@color/comment_btn_color"/>
         <ImageButton
             android:id="@+id/share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@drawable/ic_share"/>
+            android:src="@drawable/ic_share"
+            app:tint="@color/share_btn_color"
+            android:background="@color/item_background"/>
     </LinearLayout>
 
     <TextView
         android:id="@+id/like_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:layout_below="@id/lll"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/simple_text"
         android:textSize="14sp"
-        tools:text="Like: 0"/>
+        tools:text="Like: 0" />
 
 </RelativeLayout>

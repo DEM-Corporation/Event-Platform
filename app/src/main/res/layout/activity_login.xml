@@ -3,30 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/white_background"
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity">
+
     <ImageButton
         android:id="@+id/back_from_login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/back_btn_background"
         android:padding="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"/>
+        app:tint="@color/back_btn_icon_color"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
 
     <TextView
         android:id="@+id/sign_in_txt"
-        android:fontFamily="@font/ubuntu_medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in"
-        android:textColor="@color/black"
-        android:textSize="26sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
-        />
+        android:fontFamily="@font/ubuntu_medium"
+        android:text="@string/sign_in"
+        android:textColor="@color/simple_text"
+        android:textSize="26sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,8 +41,8 @@
             android:layout_height="wrap_content"
             android:minHeight="50dp"
             android:hint="@string/email"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black75"
+            android:textColor="@color/simple_text"
+            android:textColorHint="@color/simple_text"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingTop="10dp"
@@ -55,8 +56,8 @@
             android:layout_height="wrap_content"
             android:minHeight="50dp"
             android:hint="@string/password"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black75"
+            android:textColor="@color/simple_text"
+            android:textColorHint="@color/simple_text"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingTop="10dp"
@@ -85,7 +86,7 @@
             android:background="@drawable/sign_up_btn"
             android:text="@string/sign_in"
             android:textSize="18sp"
-            android:textColor="@color/white" />
+            android:textColor="@color/sign_up_btn_text_color" />
 
         <TextView
             android:layout_width="wrap_content"

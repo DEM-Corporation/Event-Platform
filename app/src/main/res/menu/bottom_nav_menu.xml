@@ -6,7 +6,7 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_tape"
-        android:title="News" />
+        android:title="Tape" />
 
     <item
         android:id="@+id/navigation_dashboard"

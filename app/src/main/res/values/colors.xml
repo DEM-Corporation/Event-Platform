@@ -10,4 +10,56 @@
     <color name="blue">#606EED</color>
     <color name="green">#80C17E</color>
 
+    <color name="simple_white"> #fff </color>
+    <color name="white_background"> #fff </color>
+    <color name="main_background"> #f4f4f4 </color>
+
+    <!--Sign in btn-->
+    <color name="sign_in_btn_color"> #fff </color>
+    <color name="sign_in_btn_stroke"> #000 </color>
+    <color name="sign_in_btn_text_color"> #000 </color>
+
+    <!--Sign up btn-->
+    <color name="sign_up_btn_color"> #000 </color>
+    <color name="sign_up_btn_stroke"> #000 </color>
+    <color name="sign_up_btn_text_color"> #fff </color>
+
+    <color name="simple_text"> #000 </color>
+
+    <color name="back_btn_color"> #000 </color>
+    <color name="back_btn_icon_color"> #fff </color>
+
+    <color name="edit_text_stroke"> #000 </color>
+
+    <color name="item_background"> #fff </color>
+
+    <color name="menu_icon_color"> #000 </color>
+    <color name="menu_icon_background"> #fff </color>
+
+<!--    "I'll go" btn colors-->
+    <color name="i_will_go_btn_color"> #fff </color>
+    <color name="i_will_go_btn_stroke"> #000 </color>
+    <color name="i_will_go_btn_text_color"> #000 </color>
+
+<!--    Share btn colors-->
+    <color name="share_btn_color"> #000 </color>
+
+    <!--    Like btn colors-->
+    <color name="like_btn_color"> #000 </color>
+
+    <!--    Comment btn colors-->
+    <color name="comment_btn_color"> #000 </color>
+
+    <color name="bottom_nav_not_checked"> #000 </color>
+    <color name="bottom_nav_checked">  #606EED </color>
+
+    <color name="message_single_layout_background"> #fff </color>
+    <color name="message_from_me_single_layout_background"> #606EED </color>
+
+    <color name="chat_toolbar_background"> #fff </color>
+    <color name="chat_message_edittxt_background"> #fff </color>
+    <color name="chat_menu_icon_background"> #fff </color>
+    <color name="chat_back_btn_background"> #fff </color>
+    <color name="chat_back_btn_color"> #000 </color>
+
 </resources>

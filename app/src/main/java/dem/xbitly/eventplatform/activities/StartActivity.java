@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dem.xbitly.eventplatform.databinding.ActivityStartBinding;
@@ -23,6 +24,8 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityStartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         binding.toSignInBtn.setOnClickListener(v -> {
             Intent in_intent = new Intent (StartActivity.this, LoginActivity.class);

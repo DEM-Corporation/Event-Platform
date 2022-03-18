@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,6 +56,7 @@ public class ChatAdapter extends FirebaseRecyclerAdapter<Chat, ChatAdapter.viewH
                             intent.putExtra("chatID2", chat_id);
                             intent.putExtra("privacy", finalPrivacy); //private event or not
                             v.getContext().startActivity(intent);
+//                            Animatoo.animateSlideLeft(viewHolder.itemView. )
                         }else{
                             Snackbar.make(v, "Hm, something went wrong", Snackbar.LENGTH_SHORT).show();
                         }

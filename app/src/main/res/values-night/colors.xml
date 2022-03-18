@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black75">#BF000000</color>
+    <color name="black90">#E6000000</color>
+    <color name="red">#FF0000</color>
+    <color name="gray">#F7F7F7</color>
+    <color name="blue">#606EED</color>
+    <color name="green">#80C17E</color>
+
+    <color name="white_background"> #161819 </color>
+    <color name="main_background"> #161819 </color>
+
+    <!--Sign in btn-->
+    <color name="sign_in_btn_color"> #161819 </color>
+    <color name="sign_in_btn_stroke"> #fff </color>
+    <color name="sign_in_btn_text_color"> #fff </color>
+
+    <!--Sign up btn-->
+    <color name="sign_up_btn_color"> #fff </color>
+    <color name="sign_up_btn_stroke"> #fff </color>
+    <color name="sign_up_btn_text_color"> #000 </color>
+
+    <color name="simple_text"> #fff </color>
+
+    <color name="back_btn_color"> #fff </color>
+    <color name="back_btn_icon_color"> #000 </color>
+
+    <color name="edit_text_stroke"> #fff </color>
+
+    <color name="item_background"> #252728 </color>
+
+    <color name="menu_icon_color"> #fff </color>
+    <color name="menu_icon_background"> #252728 </color>
+
+    <!--    "I'll go" btn colors-->
+    <color name="i_will_go_btn_color"> #161819 </color>
+    <color name="i_will_go_btn_stroke"> #fff </color>
+    <color name="i_will_go_btn_text_color"> #fff </color>
+
+    <!--    Share btn colors-->
+    <color name="share_btn_color"> #fff </color>
+
+    <!--    Like btn colors-->
+    <color name="like_btn_color"> #fff </color>
+
+    <!--    Comment btn colors-->
+    <color name="comment_btn_color"> #fff </color>
+
+
+    <color name="bottom_nav_not_checked"> #fff </color>
+    <color name="bottom_nav_checked">  #606EED </color>
+
+    <color name="message_single_layout_background"> #252728 </color>
+    <color name="message_from_me_single_layout_background"> #5159A6 </color>
+
+    <color name="chat_toolbar_background"> #252728 </color>
+    <color name="chat_message_edittxt_background"> #252728 </color>
+    <color name="chat_menu_icon_background"> #161819 </color>
+    <color name="chat_back_btn_background"> #161819 </color>
+    <color name="chat_back_btn_color"> #fff </color>
+
+</resources>

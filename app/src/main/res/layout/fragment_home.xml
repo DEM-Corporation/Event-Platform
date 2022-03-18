@@ -14,10 +14,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_posts_recycler"
             android:layout_width="match_parent"
-            android:background="#f4f4f4"
+            android:background="@color/main_background"
+            android:paddingTop="10dp"
             android:layout_height="match_parent"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

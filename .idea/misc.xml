@@ -11,6 +11,45 @@
         <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/layout/fragment_profile.xml" value="0.23489583333333333" />
         <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/layout/item_invite.xml" value="0.23958333333333334" />
         <entry key="..\:/Desktop/EventPlatformAppForUnior/app/src/main/res/layout/item_review.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform-Test/app/src/main/res/layout/activity_chat.xml" value="0.18614130434782608" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform-Test/app/src/main/res/layout/activity_login.xml" value="0.18614130434782608" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform-Test/app/src/main/res/layout/fragment_home.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform-Test/app/src/main/res/layout/fragment_profile.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform-Test/app/src/main/res/layout/item_invite.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform-Test/app/src/main/res/layout/message_from_me_single_layout.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform-Test/app/src/main/res/layout/message_single_layout.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform-Test/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/back_btn_background.xml" value="0.3635" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/bottom_navigation_selector.xml" value="0.3635" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/chat_edittxt_background.xml" value="0.182" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/edit_txt_shape.xml" value="0.3635" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/go_btn_bg.xml" value="0.3635" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.182" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/ic_chats.xml" value="0.132" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/item_shape.xml" value="0.3635" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/message_from_me_single_layout.xml" value="0.182" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/message_single_shape.xml" value="0.182" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/popup_menu_background.xml" value="0.17" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/popup_menu_text_color.xml" value="0.2265" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/sign_in_btn.xml" value="0.3635" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/sign_up_btn.xml" value="0.3635" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_chat.xml" value="0.22" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_register.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_start.xml" value="0.25" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/fragment_messenger.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/fragment_notifications.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/fragment_profile.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/item_chat.xml" value="0.2164855072463768" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/item_invite.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/item_invite_notifications.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/item_person.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/item_review.xml" value="0.3625" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/message_from_me_single_layout.xml" value="0.2871376811594203" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/message_single_layout.xml" value="0.30052083333333335" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/menu/bottom_nav_menu.xml" value="0.35" />
       </map>
     </option>
   </component>

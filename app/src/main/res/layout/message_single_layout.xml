@@ -7,7 +7,7 @@
     android:layout_marginStart="10dp"
     android:minWidth="60dp"
     android:layout_marginEnd="75dp"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="3dp"
     android:layout_marginBottom="5dp"
     android:background="@drawable/message_single_shape">
 
@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:minWidth="40dp"
         android:layout_below="@id/message_author"
+        android:textColor="@color/simple_text"
         android:text="Mrfnrjfnrnjf "
         android:textSize="15sp" />
 
@@ -36,7 +37,7 @@
         android:layout_alignEnd="@+id/message_text"
         android:layout_marginEnd="2dp"
         android:text="12:00"
-        android:textColor="#B3000000"
+        android:textColor="@color/simple_text"
         android:textSize="12sp" />
 
 </RelativeLayout>

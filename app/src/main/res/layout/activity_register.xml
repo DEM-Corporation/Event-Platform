@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white_background"
     tools:context=".activities.RegisterActivity">
 
     <ImageButton
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_arrow_back_24"
+        app:tint="@color/back_btn_icon_color"
         android:background="@drawable/back_btn_background"
         android:padding="10dp"
         android:layout_marginStart="30dp"
@@ -20,13 +22,12 @@
         android:id="@+id/sign_up_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sign_up"
-        android:fontFamily="@font/ubuntu_medium"
-        android:textColor="@color/black"
-        android:textSize="26sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
-        />
+        android:fontFamily="@font/ubuntu_medium"
+        android:text="@string/sign_up"
+        android:textColor="@color/simple_text"
+        android:textSize="26sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,12 +42,12 @@
             android:layout_height="wrap_content"
             android:minHeight="50dp"
             android:hint="@string/username"
-            android:textColor="@color/black"
+            android:textColor="@color/simple_text"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textColorHint="@color/black75"
+            android:textColorHint="@color/simple_text"
             android:background="@drawable/edit_txt_shape"
             android:inputType="textPersonName"/>
 
@@ -56,12 +57,12 @@
             android:layout_height="wrap_content"
             android:minHeight="50dp"
             android:hint="@string/email"
-            android:textColorHint="@color/black75"
+            android:textColorHint="@color/simple_text"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/simple_text"
             android:background="@drawable/edit_txt_shape"
             android:layout_marginTop="20dp"
             android:inputType="textEmailAddress"/>
@@ -72,8 +73,8 @@
             android:layout_height="wrap_content"
             android:minHeight="50dp"
             android:hint="@string/password"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black75"
+            android:textColor="@color/simple_text"
+            android:textColorHint="@color/simple_text"
             android:inputType="textPassword"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
@@ -86,7 +87,7 @@
             android:id="@+id/male_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/simple_text"
             android:minHeight="50dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp">
@@ -94,7 +95,7 @@
                 android:id="@+id/male_check_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/simple_text"
                 android:text="@string/male"
                 android:textSize="18sp"/>
 
@@ -102,7 +103,7 @@
                 android:id='@+id/female_check_register'
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/simple_text"
                 android:text="@string/female"
                 android:textSize="18sp"
                 android:layout_marginStart="40dp"/>
@@ -131,7 +132,7 @@
             android:background="@drawable/sign_up_btn"
             android:text="@string/sign_up"
             android:textSize="18sp"
-            android:textColor="@color/white" />
+            android:textColor="@color/sign_up_btn_text_color" />
 
         <TextView
             android:layout_width="wrap_content"
