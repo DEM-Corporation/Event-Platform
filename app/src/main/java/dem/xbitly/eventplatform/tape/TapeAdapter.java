@@ -3,10 +3,14 @@ package dem.xbitly.eventplatform.tape;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
@@ -302,8 +306,19 @@ public class TapeAdapter extends RecyclerView.Adapter<TapeHolder> {
                     if (Objects.requireNonNull(snapshot2.child("userID").getValue()).toString().equals(userID)) {
                         popup.getMenu().add(Menu.NONE, 0, Menu.NONE, "About event");
                         popup.getMenu().add(Menu.NONE, 1, Menu.NONE, "Edit");
+
+                        for (int i=0; i<2; ++i){
+                            MenuItem item = popup.getMenu().getItem(i);
+                            SpannableString spannableString = new SpannableString(popup.getMenu().getItem(i).getTitle().toString());
+                            spannableString.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.simple_white_text)), 0, spannableString.length(), 0);
+                            item.setTitle(spannableString);
+                        }
                     } else {
                         popup.getMenu().add(Menu.NONE, 0, Menu.NONE, "About event");
+                        MenuItem item = popup.getMenu().getItem(0);
+                        SpannableString spannableString = new SpannableString(popup.getMenu().getItem(0).getTitle().toString());
+                        spannableString.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.simple_white_text)), 0, spannableString.length(), 0);
+                        item.setTitle(spannableString);
                     }
                     popup.show();
                     popup.setOnMenuItemClickListener(menuItem -> {
@@ -453,8 +468,20 @@ public class TapeAdapter extends RecyclerView.Adapter<TapeHolder> {
                     if (Objects.requireNonNull(snapshot2.child("userID").getValue()).toString().equals(userID)) {
                         popup.getMenu().add(Menu.NONE, 0, Menu.NONE, "About event");
                         popup.getMenu().add(Menu.NONE, 1, Menu.NONE, "Edit");
+
+                        for (int i=0; i<2; ++i){
+                            MenuItem item = popup.getMenu().getItem(i);
+                            SpannableString spannableString = new SpannableString(popup.getMenu().getItem(i).getTitle().toString());
+                            spannableString.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.simple_white_text)), 0, spannableString.length(), 0);
+                            item.setTitle(spannableString);
+                        }
                     } else {
                         popup.getMenu().add(Menu.NONE, 0, Menu.NONE, "About event");
+
+                        MenuItem item = popup.getMenu().getItem(0);
+                        SpannableString spannableString = new SpannableString(popup.getMenu().getItem(0).getTitle().toString());
+                        spannableString.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.simple_white_text)), 0, spannableString.length(), 0);
+                        item.setTitle(spannableString);
                     }
                     popup.show();
                     popup.setOnMenuItemClickListener(menuItem -> {

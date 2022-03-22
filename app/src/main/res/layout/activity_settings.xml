@@ -6,24 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.SettingsActivity"
-    android:background="@color/white">
+    android:background="@color/main_background">
 
     <ImageButton
         android:id="@+id/back_from_settings_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/back_btn_background"
         android:padding="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"/>
+        app:tint="@color/back_btn_icon_color"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
 
     <TextView
         android:id="@+id/settings_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SETTINGS"
-        android:textColor="#000"
+        android:textColor="@color/simple_text"
         android:fontFamily="@font/ubuntu_medium"
         android:textSize="26sp"
         android:layout_centerHorizontal="true"
@@ -34,22 +35,22 @@
         android:id="@+id/profile_linear"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
         android:layout_below="@+id/settings_txt"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/items_settings_shape">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profile"
-            android:layout_marginStart="20dp"
-            android:textSize="20sp"
             android:layout_centerVertical="true"
-            android:textColor="#000"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:text="@string/profile"
+            android:textColor="@color/simple_text"
+            android:textSize="20sp" />
 
 
         <ImageButton
@@ -59,8 +60,43 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="5dp"
-            android:background="#f7f7f7"
+            app:tint="@color/simple_text"
+            android:background="@color/settings_item_background"
             android:src="@drawable/ic_baseline_navigate_next_24" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dark_theme_linear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/profile_linear"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/items_settings_shape">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Dark theme"
+            android:textColor="@color/simple_text"
+            android:textSize="20sp" />
+
+
+        <Switch
+            android:id="@+id/dark_theme_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:background="@color/settings_item_background" />
 
 
     </RelativeLayout>

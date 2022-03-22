@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.ConnectivityManager;
@@ -59,7 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
         checkNetwork();
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        SharedPreferences prefs = getSharedPreferences("app_settings", MODE_PRIVATE);
+        if (prefs.getBoolean("dark_theme", false)==true){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         mAuth = FirebaseAuth.getInstance();
         setContentView(binding.getRoot());

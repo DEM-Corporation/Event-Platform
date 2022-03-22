@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bottom_event_info_shape"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -18,8 +19,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:background="@color/white"
+            android:background="@color/white_background"
             android:padding="5dp"
+            app:tint="@color/bottom_sheet_icons_color"
             android:src="@drawable/ic_baseline_close" />
 
         <TextView
@@ -27,12 +29,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="60dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
             android:fontFamily="@font/ubuntu_medium"
+            android:textColor="@color/simple_text"
+            android:textSize="18sp"
             tools:text="NAME OF EVENT" />
 
         <TextView
@@ -41,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="Private"
             android:textSize="14sp"
-            android:textColor="@color/black75"
+            android:textColor="@color/simple_text"
             android:layout_below="@+id/name"/>
 
 
@@ -61,6 +63,7 @@
             android:id="@+id/i1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:tint="@color/bottom_sheet_icons_color"
             android:src="@drawable/ic_baseline_place_24"/>
 
         <TextView
@@ -70,7 +73,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/i1"
-            android:textColor="@color/black"
+            android:textColor="@color/simple_text"
             android:textSize="14sp"
             tools:text="Moscow" />
     </RelativeLayout>
@@ -88,6 +91,7 @@
             android:id="@+id/i2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:tint="@color/bottom_sheet_icons_color"
             android:src="@drawable/ic_baseline_people_24"/>
 
         <TextView
@@ -97,7 +101,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/i2"
-            android:textColor="@color/black"
+            android:textColor="@color/simple_text"
             android:textSize="14sp"
             tools:text="11/20" />
     </RelativeLayout>
@@ -115,6 +119,7 @@
             android:id="@+id/i3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:tint="@color/bottom_sheet_icons_color"
             android:src="@drawable/ic_baseline_date_range_24_black"/>
 
         <TextView
@@ -124,7 +129,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/i3"
-            android:textColor="@color/black"
+            android:textColor="@color/simple_text"
             android:textSize="14sp"
             tools:text="20.12.2021" />
     </RelativeLayout>
@@ -143,6 +148,7 @@
             android:id="@+id/i4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:tint="@color/bottom_sheet_icons_color"
             android:src="@drawable/ic_baseline_access_time_24_black"/>
 
         <TextView
@@ -152,7 +158,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/i4"
-            android:textColor="@color/black"
+            android:textColor="@color/simple_text"
             android:textSize="14sp"
             tools:text="10:00" />
     </RelativeLayout>

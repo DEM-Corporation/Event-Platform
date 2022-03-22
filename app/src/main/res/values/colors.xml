@@ -5,8 +5,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black75">#BF000000</color>
     <color name="black90">#E6000000</color>
+    <color name="gray">#CACACA</color>
     <color name="red">#FF0000</color>
-    <color name="gray">#F7F7F7</color>
+
     <color name="blue">#606EED</color>
     <color name="green">#80C17E</color>
 
@@ -25,6 +26,7 @@
     <color name="sign_up_btn_text_color"> #fff </color>
 
     <color name="simple_text"> #000 </color>
+    <color name="simple_white_text"> #fff </color>
 
     <color name="back_btn_color"> #000 </color>
     <color name="back_btn_icon_color"> #fff </color>
@@ -61,5 +63,11 @@
     <color name="chat_menu_icon_background"> #fff </color>
     <color name="chat_back_btn_background"> #fff </color>
     <color name="chat_back_btn_color"> #000 </color>
+
+    <color name="settings_item_background">#fff</color>
+
+    <color name="profile_header_background"> #606EED </color>
+
+    <color name="bottom_sheet_icons_color"> #000 </color>
 
 </resources>

@@ -5,13 +5,17 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
@@ -42,6 +46,7 @@ import java.util.Objects;
 
 import dem.xbitly.eventplatform.Message.Message;
 import dem.xbitly.eventplatform.Message.MessageAdapter;
+import dem.xbitly.eventplatform.R;
 import dem.xbitly.eventplatform.bottomsheet.BottomSheetEventDialog;
 import dem.xbitly.eventplatform.databinding.ActivityChatBinding;
 
@@ -140,6 +145,14 @@ public class ChatActivity extends AppCompatActivity {
             PopupMenu popup = new PopupMenu(getApplicationContext(), v);
             popup.getMenu().add(Menu.NONE, 0, Menu.NONE, "About event");
             popup.getMenu().add(Menu.NONE, 1, Menu.NONE, "Members");
+
+            for (int i=0; i<2; ++i){ //setting textColor
+                MenuItem item = popup.getMenu().getItem(i);
+                SpannableString spannableString = new SpannableString(popup.getMenu().getItem(i).getTitle().toString());
+                spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.simple_white_text)), 0, spannableString.length(), 0);
+                item.setTitle(spannableString);
+            }
+
             t = true;
             FirebaseDatabase.getInstance().getReference().child("Chats").child(Integer.toString(getIntent().getIntExtra("chatID", 0)))
                     .child("event_number").addValueEventListener(new ValueEventListener() {

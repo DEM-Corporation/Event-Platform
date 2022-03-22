@@ -7,7 +7,7 @@
     android:layout_marginStart="30dp"
     android:layout_marginEnd="30dp"
     android:layout_marginBottom="5dp"
-    android:background="@color/simple_white"
+    android:background="@drawable/item_person_shape"
     android:layout_marginTop="5dp">
 
     <ImageView
@@ -25,6 +25,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="65dp"
         android:layout_toEndOf="@+id/profile_image"
+        android:textColor="@color/simple_text"
         android:textSize="16sp" />
 
 </RelativeLayout>

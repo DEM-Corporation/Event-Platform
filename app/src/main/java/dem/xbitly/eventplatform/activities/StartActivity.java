@@ -2,6 +2,7 @@ package dem.xbitly.eventplatform.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -23,9 +24,15 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityStartBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        SharedPreferences prefs = getSharedPreferences("app_settings", MODE_PRIVATE);
+        if (prefs.getBoolean("dark_theme", false)==true){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+        setContentView(binding.getRoot());
 
         binding.toSignInBtn.setOnClickListener(v -> {
             Intent in_intent = new Intent (StartActivity.this, LoginActivity.class);

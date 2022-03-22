@@ -2,12 +2,15 @@ package dem.xbitly.eventplatform.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.CompoundButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import dem.xbitly.eventplatform.databinding.ActivitySettingsBinding;
 import dem.xbitly.eventplatform.network.NetworkManager;
@@ -23,6 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
         binding = ActivitySettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        checkNetwork();
 
         binding.backFromSettingsBtn.setOnClickListener(v ->
                 startActivity(new Intent(SettingsActivity.this, MainActivity.class)));
@@ -30,7 +34,29 @@ public class SettingsActivity extends AppCompatActivity {
         binding.toProfileSettingsBtn.setOnClickListener(v ->
                 startActivity(new Intent(SettingsActivity.this, ProfileSettings.class)));
 
-        checkNetwork();
+        SharedPreferences prefs = getSharedPreferences("app_settings", MODE_PRIVATE);
+        if (prefs.getBoolean("dark_theme", false)){
+            binding.darkThemeSwitch.setChecked(true);
+        }else{
+            binding.darkThemeSwitch.setChecked(false);
+        }
+
+        binding.darkThemeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("dark_theme", true);
+                    editor.apply();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }else{
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("dark_theme", false);
+                    editor.apply();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+        });
     }
 
     public void checkNetwork(){
