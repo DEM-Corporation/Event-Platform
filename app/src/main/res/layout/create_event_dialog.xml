@@ -11,13 +11,12 @@
         android:id="@+id/create_event_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/create_event"
-        android:fontFamily="@font/ubuntu_medium"
-        android:textSize="26sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/ubuntu_medium"
+        android:text="@string/create_event"
+        android:textColor="@color/simple_text"
+        android:textSize="26sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,6 +38,7 @@
             android:layout_marginEnd="7.5dp"
             android:text="@string/publicc"
             android:textSize="18sp"
+            android:textColor="@color/sign_in_btn_text_color"
             android:layout_weight="1"/>
 
         <Button
@@ -48,7 +48,7 @@
             android:background="@drawable/sign_up_btn"
             android:text="@string/privatee"
             android:layout_marginStart="7.5dp"
-            android:textColor="@color/white"
+            android:textColor="@color/sign_up_btn_text_color"
             android:textSize="18sp"
             android:layout_weight="1"/>
     </LinearLayout>

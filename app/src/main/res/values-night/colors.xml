@@ -69,4 +69,6 @@
 
     <color name="bottom_sheet_icons_color"> #fff </color>
 
+    <color name="create_event_open_dialog_btn_color">#6571D6</color>
+
 </resources>

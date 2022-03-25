@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CompoundButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,32 +29,42 @@ public class SettingsActivity extends AppCompatActivity {
 
         checkNetwork();
 
+        SharedPreferences prefs = getSharedPreferences("app_settings", MODE_PRIVATE);
+        if (prefs.getBoolean("dark_theme", false)){
+            binding.darkThemeSwitch.setChecked(true);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }else{
+            binding.darkThemeSwitch.setChecked(false);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
         binding.backFromSettingsBtn.setOnClickListener(v ->
                 startActivity(new Intent(SettingsActivity.this, MainActivity.class)));
 
         binding.toProfileSettingsBtn.setOnClickListener(v ->
                 startActivity(new Intent(SettingsActivity.this, ProfileSettings.class)));
 
-        SharedPreferences prefs = getSharedPreferences("app_settings", MODE_PRIVATE);
-        if (prefs.getBoolean("dark_theme", false)){
-            binding.darkThemeSwitch.setChecked(true);
-        }else{
-            binding.darkThemeSwitch.setChecked(false);
-        }
-
         binding.darkThemeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b){
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putBoolean("dark_theme", true);
-                    editor.apply();
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    if (!prefs.getBoolean("dark_theme", false)){
+                        binding.darkThemeSwitch.setChecked(true);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putBoolean("dark_theme", true);
+                        editor.apply();
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    }
+                    Log.d("dark_theme", "theme was changed to dark theme");
                 }else{
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putBoolean("dark_theme", false);
-                    editor.apply();
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    if (prefs.getBoolean("dark_theme", false)){
+                        binding.darkThemeSwitch.setChecked(false);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putBoolean("dark_theme", false);
+                        editor.apply();
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    }
+                    Log.d("dark_theme", "theme was changed to light theme");
                 }
             }
         });

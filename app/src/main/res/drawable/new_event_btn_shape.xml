@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 <corners android:radius="100dp"/>
-    <solid android:color="@color/blue"/>
+    <solid android:color="@color/create_event_open_dialog_btn_color"/>
 </shape>

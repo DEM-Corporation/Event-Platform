@@ -70,4 +70,6 @@
 
     <color name="bottom_sheet_icons_color"> #000 </color>
 
+    <color name="create_event_open_dialog_btn_color"> #606EED </color>
+
 </resources>
