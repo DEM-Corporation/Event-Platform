@@ -96,9 +96,11 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
                     // set the custom dialog layout
                     final View customLayout = getLayoutInflater().inflate(R.layout.accept_invite_dialog, null);
+                    customLayout.setBackgroundResource(R.drawable.create_event_dialog_shape);
                     builder.setView(customLayout);
                     Dialog dialog = new Dialog(MainActivity.this);
                     dialog.setContentView(customLayout);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.create_event_dialog_shape);
                     dialog.show();
                     dialog.setCanceledOnTouchOutside(false);
                     Button yes = customLayout.findViewById(R.id.btn_accept_invite_link);

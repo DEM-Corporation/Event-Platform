@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
-    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/create_event_dialog_shape"
     android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:layout_marginTop="20dp">
+        android:paddingEnd="20dp">
 
         <ImageButton
             android:id="@+id/btn_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:background="@color/white"
+            android:background="@color/white_background"
             android:padding="5dp"
-            android:src="@drawable/ic_baseline_close" />
+            android:src="@drawable/ic_baseline_close"
+            app:tint="@color/simple_text" />
 
         <TextView
             android:id="@+id/event_name_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="60dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:text="@string/edit" />
+            android:text="@string/edit"
+            android:textColor="@color/simple_text"
+            android:textSize="18sp" />
 
 
     </RelativeLayout>
@@ -57,11 +59,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/r1"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:text="NO"
-        android:textColor="@color/black75"
+        android:textColor="@color/simple_text"
         android:textSize="14sp" />
 
 </RelativeLayout>
