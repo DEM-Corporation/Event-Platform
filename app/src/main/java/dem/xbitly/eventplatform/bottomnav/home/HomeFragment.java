@@ -50,8 +50,6 @@ public class HomeFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        checkNetwork();
-
         FirebaseDatabase dBase = FirebaseDatabase.getInstance();
         DatabaseReference ref = dBase.getReference("Reviews");
         DatabaseReference ref2 = dBase.getReference("Invite");

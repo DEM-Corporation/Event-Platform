@@ -54,8 +54,6 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        checkNetwork();
-
         FirebaseDatabase dBase = FirebaseDatabase.getInstance();
         DatabaseReference ref = dBase.getReference("Users");
         profile_name = root.findViewById(R.id.profile_name);

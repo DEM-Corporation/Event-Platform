@@ -78,8 +78,6 @@ public class MapFragment extends Fragment implements LocationListener {
         View root = inflater.inflate(R.layout.fragment_map, container, false);
         this.context = root.getContext();
 
-        checkNetwork();
-
         //Check permissions
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){

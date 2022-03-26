@@ -39,8 +39,6 @@ public class MessengerFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_messenger, container, false);
 
-        checkNetwork();
-
         recView = root.findViewById(R.id.chatsRecView);
         FirebaseRecyclerOptions<Chat> options =
                 new FirebaseRecyclerOptions.Builder<Chat>()
