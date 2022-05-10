@@ -61,6 +61,9 @@ public class PublicEventActivity extends AppCompatActivity {
 
     private int event_number;//номер евента
 
+    //checking if event is not outdated
+    private boolean is_time_ok = true;
+    private boolean is_date_ok = true;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -106,68 +109,72 @@ public class PublicEventActivity extends AppCompatActivity {
             if (binding.eventNamePublic.getText().toString().isEmpty() || binding.eventMaxAmount.getText().toString().isEmpty()
                     || binding.eventTime.getText().toString().isEmpty() || binding.eventDate.getText().toString().isEmpty()) { //нельзя, чтобы поля пустыми были
                 FancyToast.makeText(getApplicationContext(),"Fields cannot be empty",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
-            } else {
-                if (binding.eventMaxAmount.getText().toString().equals("Infinity")) {
-                    event_info.put("max_amount", "0");
-                } else {
-                    event_info.put("max_amount", binding.eventMaxAmount.getText().toString());
-                }
-                event_info.put("name", binding.eventNamePublic.getText().toString());
-                event_info.put("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
+            }
+            else {
+                if (!is_time_ok || !is_date_ok){
+                    FancyToast.makeText(getApplicationContext(), "Event is outdated, check time and date", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+                }else{
 
-                //если все хорошо, то создаем reference для этого мероприятия
-                ref.addValueEventListener(new ValueEventListener(){
+                    if (binding.eventMaxAmount.getText().toString().equals("Infinity")) {
+                        event_info.put("max_amount", "0");
+                    } else {
+                        event_info.put("max_amount", binding.eventMaxAmount.getText().toString());
+                    }
+                    event_info.put("name", binding.eventNamePublic.getText().toString());
+                    event_info.put("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(a) {
-                            try {
-                                event_number = Integer.parseInt(snapshot.child("count").getValue().toString());
-                                ref = database.getReference("PublicEvents").child(String.valueOf(event_number));
-                                ref.setValue(event_info).addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
+                    //если все хорошо, то создаем reference для этого мероприятия
+                    ref.addValueEventListener(new ValueEventListener(){
 
-                                        Intent intent = new Intent (PublicEventActivity.this, EventDescriptionActivity.class);
-                                        intent.putExtra("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                        intent.putExtra("eventID", event_number);
-                                        intent.putExtra("event_name", binding.eventNamePublic.getText().toString());
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(a) {
+                                try {
+                                    event_number = Integer.parseInt(snapshot.child("count").getValue().toString());
+                                    ref = database.getReference("PublicEvents").child(String.valueOf(event_number));
+                                    ref.setValue(event_info).addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()) {
 
-                                        startActivity(intent);
-                                    } else {
-                                        FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
-                                    }
-                                });
-                                snapshot.getRef().child("count").setValue(event_number+2);
-                                a = false;
-                            } catch (Exception e) {
-                                event_number = 0;
-                                ref = database.getReference("PublicEvents").child(String.valueOf(event_number));
-                                ref.setValue(event_info).addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
+                                            Intent intent = new Intent (PublicEventActivity.this, EventDescriptionActivity.class);
+                                            intent.putExtra("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                            intent.putExtra("eventID", event_number);
+                                            intent.putExtra("event_name", binding.eventNamePublic.getText().toString());
 
-                                        Intent intent = new Intent (PublicEventActivity.this, EventDescriptionActivity.class);
-                                        intent.putExtra("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                        intent.putExtra("eventID", event_number);
-                                        intent.putExtra("event_name", binding.eventNamePublic.getText().toString());
+                                            startActivity(intent);
+                                        } else {
+                                            FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
+                                        }
+                                    });
+                                    snapshot.getRef().child("count").setValue(event_number+2);
+                                    a = false;
+                                } catch (Exception e) {
+                                    event_number = 0;
+                                    ref = database.getReference("PublicEvents").child(String.valueOf(event_number));
+                                    ref.setValue(event_info).addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()) {
 
-                                        startActivity(intent);
-                                    } else {
-                                        FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
-                                    }
-                                });
-                                snapshot.getRef().child("count").setValue(event_number+2);
-                                a = false;
+                                            Intent intent = new Intent (PublicEventActivity.this, EventDescriptionActivity.class);
+                                            intent.putExtra("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                            intent.putExtra("eventID", event_number);
+                                            intent.putExtra("event_name", binding.eventNamePublic.getText().toString());
+
+                                            startActivity(intent);
+                                        } else {
+                                            FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
+                                        }
+                                    });
+                                    snapshot.getRef().child("count").setValue(event_number+2);
+                                    a = false;
+                                }
                             }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
-
-
+                        }
+                    });
+                }
             }
         });
 
@@ -203,6 +210,11 @@ public class PublicEventActivity extends AppCompatActivity {
             date.setMinutes(minute);
             event_info.put("time", formatForTime.format(date));
 
+            //check if event is outdated
+            if (new Date().after(date)){
+                is_time_ok = false;
+            }
+
             binding.eventTime.setText(formatForTime.format(date));
         }
     };
@@ -217,6 +229,11 @@ public class PublicEventActivity extends AppCompatActivity {
             SimpleDateFormat formatForDate = new SimpleDateFormat("dd.MM.yyyy");
             Date date = new Date(year-1900, monthOfYear, dayOfMonth);
             event_info.put("date", formatForDate.format(date));
+
+            //check if event is outdated
+            if (new Date().after(date)){
+                is_date_ok = false;
+            }
 
             binding.eventDate.setText(formatForDate.format(date));
         }

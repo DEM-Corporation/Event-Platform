@@ -72,6 +72,11 @@ public class PrivateEventActivity extends AppCompatActivity {
 
     boolean a = true;
 
+    //checking if event is not outdated
+    private boolean is_time_ok = true;
+    private boolean is_date_ok = true;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,13 +89,6 @@ public class PrivateEventActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            // TODO: Consider calling
-//            //    ActivityCompat#requestPermissions
-//
-//            return;
-//        }
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{
@@ -129,70 +127,73 @@ public class PrivateEventActivity extends AppCompatActivity {
                     || binding.eventDate.getText().toString().isEmpty()) { //нельзя, чтобы поля пустыми были
                 FancyToast.makeText(getApplicationContext(),"Fields cannot be empty",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
             } else {
-                //если все хорошо, то создаем reference для этого мероприятия
-                ref.addValueEventListener(new ValueEventListener(){
+                if (!is_time_ok || !is_date_ok){
+                    FancyToast.makeText(getApplicationContext(), "Event is outdated, check time and date", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+                }else{
+                    //если все хорошо, то создаем reference для этого мероприятия
+                    ref.addValueEventListener(new ValueEventListener(){
 
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(a) {
-                            try {
-                                event_number = Integer.parseInt(snapshot.child("count").getValue().toString());
-                                ref = database.getReference("PrivateEvents").child(String.valueOf(event_number));
-                                ref.setValue(event_info).addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()){
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(a) {
+                                try {
+                                    event_number = Integer.parseInt(snapshot.child("count").getValue().toString());
+                                    ref = database.getReference("PrivateEvents").child(String.valueOf(event_number));
+                                    ref.setValue(event_info).addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()){
 
-                                        Intent intent = new PlacePicker.IntentBuilder()
-                                                .setLatLong(latitude, longitude)
-                                                .showLatLong(true)
-                                                .setMapType(MapType.NORMAL)
-                                                .setFabColor(R.color.blue)
-                                                .setMarkerDrawable(R.drawable.ic_location_marker_green)
-                                                .build(PrivateEventActivity.this);
+                                            Intent intent = new PlacePicker.IntentBuilder()
+                                                    .setLatLong(latitude, longitude)
+                                                    .showLatLong(true)
+                                                    .setMapType(MapType.NORMAL)
+                                                    .setFabColor(R.color.blue)
+                                                    .setMarkerDrawable(R.drawable.ic_location_marker_green)
+                                                    .build(PrivateEventActivity.this);
 
-                                        startActivityForResult(intent, Constants.PLACE_PICKER_REQUEST);
-                                    }else {
-                                        FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
-                                    }
-                                });
+                                            startActivityForResult(intent, Constants.PLACE_PICKER_REQUEST);
+                                        }else {
+                                            FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
+                                        }
+                                    });
 
-                                ref.child("name").setValue(binding.eventNamePrivate.getText().toString());
-                                ref.child("userID").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                snapshot.getRef().child("count").setValue(event_number + 2);
-                                a = false;
-                            } catch (Exception e) {
-                                event_number = 1;
-                                ref = database.getReference("PrivateEvents").child(String.valueOf(event_number));
-                                ref.setValue(event_info).addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()){
+                                    ref.child("name").setValue(binding.eventNamePrivate.getText().toString());
+                                    ref.child("userID").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                    snapshot.getRef().child("count").setValue(event_number + 2);
+                                    a = false;
+                                } catch (Exception e) {
+                                    event_number = 1;
+                                    ref = database.getReference("PrivateEvents").child(String.valueOf(event_number));
+                                    ref.setValue(event_info).addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()){
 
-                                        Intent intent = new PlacePicker.IntentBuilder()
-                                                .setLatLong(latitude, longitude)
-                                                .showLatLong(true)
-                                                .setMapType(MapType.NORMAL)
-                                                .setFabColor(R.color.blue)
-                                                .setMarkerDrawable(R.drawable.ic_location_marker_green)
-                                                .build(PrivateEventActivity.this);
+                                            Intent intent = new PlacePicker.IntentBuilder()
+                                                    .setLatLong(latitude, longitude)
+                                                    .showLatLong(true)
+                                                    .setMapType(MapType.NORMAL)
+                                                    .setFabColor(R.color.blue)
+                                                    .setMarkerDrawable(R.drawable.ic_location_marker_green)
+                                                    .build(PrivateEventActivity.this);
 
-                                        startActivityForResult(intent, Constants.PLACE_PICKER_REQUEST);
-                                    }else {
-                                        FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
-                                    }
-                                });
+                                            startActivityForResult(intent, Constants.PLACE_PICKER_REQUEST);
+                                        }else {
+                                            FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
+                                        }
+                                    });
 
-                                ref.child("name").setValue(binding.eventNamePrivate.getText().toString());
-                                ref.child("userID").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                snapshot.getRef().child("count").setValue(event_number + 2);
-                                a = false;
+                                    ref.child("name").setValue(binding.eventNamePrivate.getText().toString());
+                                    ref.child("userID").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                    snapshot.getRef().child("count").setValue(event_number + 2);
+                                    a = false;
+                                }
                             }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
-
+                        }
+                    });
+                }
             }
         });
     }
@@ -226,6 +227,11 @@ public class PrivateEventActivity extends AppCompatActivity {
             date.setMinutes(minute);
             event_info.put("time", formatForTime.format(date));
 
+            //check if event is outdated
+            if (new Date().after(date)){
+                is_time_ok = false;
+            }
+
             binding.eventTime.setText(formatForTime.format(date));
         }
     };
@@ -240,6 +246,11 @@ public class PrivateEventActivity extends AppCompatActivity {
             SimpleDateFormat formatForDate = new SimpleDateFormat("dd.MM.yyyy");
             Date date = new Date(year-1900, monthOfYear, dayOfMonth);
             event_info.put("date", formatForDate.format(date));
+
+            //check if event is outdated
+            if (new Date().after(date)){
+                is_date_ok = false;
+            }
 
             binding.eventDate.setText(formatForDate.format(date));
         }

@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,10 +47,16 @@ public class HomeFragment extends Fragment {
 
     private SwipeRefreshLayout refresh;
 
+    private ImageView neutral_face_img;
+    private TextView no_public_events_title;
+    private TextView no_public_events_text;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        checkNetwork();
 
         FirebaseDatabase dBase = FirebaseDatabase.getInstance();
         DatabaseReference ref = dBase.getReference("Reviews");
@@ -57,10 +65,15 @@ public class HomeFragment extends Fragment {
         rv = root.findViewById(R.id.home_posts_recycler);
         refresh = root.findViewById(R.id.refresh_tape);
 
+        neutral_face_img = root.findViewById(R.id.neutral_face_image_id);
+        no_public_events_text = root.findViewById(R.id.no_public_events_textview2);
+        no_public_events_title = root.findViewById(R.id.no_public_events_textview1);
+
         refresh.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+
 
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -108,6 +121,15 @@ public class HomeFragment extends Fragment {
                             linearLayoutManager.setStackFromEnd(true);
                             rv.setLayoutManager(linearLayoutManager);
                             rv.setHasFixedSize(true);
+                            if (ss.length==0 && ss1.length==0){
+                                no_public_events_text.setVisibility(View.VISIBLE);
+                                no_public_events_title.setVisibility(View.VISIBLE);
+                                neutral_face_img.setVisibility(View.VISIBLE);
+                            }else{
+                                no_public_events_text.setVisibility(View.GONE);
+                                no_public_events_title.setVisibility(View.GONE);
+                                neutral_face_img.setVisibility(View.GONE);
+                            }
                             try {
                                 isUpdateRV = false;
                                 TapeAdapter tapeAdapter = new TapeAdapter(ss, ss1, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), root.getContext(), getParentFragmentManager());

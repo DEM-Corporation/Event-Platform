@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import dem.xbitly.eventplatform.R;
 import dem.xbitly.eventplatform.activities.InternetErrorConnectionActivity;
@@ -35,11 +39,32 @@ public class MessengerFragment extends Fragment {
 
     private ChatAdapter adapter;
 
+    private int chats_count=0;
+
+    private ImageView neutral_face;
+    private TextView no_chats_title;
+    private TextView no_chats_text;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_messenger, container, false);
 
         recView = root.findViewById(R.id.chatsRecView);
+        neutral_face = root.findViewById(R.id.neutral_face_image_id_messenger);
+        no_chats_title = root.findViewById(R.id.no_chats_textview);
+        no_chats_text = root.findViewById(R.id.no_chats_textview2);
+
+        if (chatsCount()==0){
+            neutral_face.setVisibility(View.VISIBLE);
+            no_chats_title.setVisibility(View.VISIBLE);
+            no_chats_text.setVisibility(View.VISIBLE);
+            Log.d("chats", "NO CHATS");
+        }else{
+            neutral_face.setVisibility(View.GONE);
+            no_chats_title.setVisibility(View.GONE);
+            no_chats_text.setVisibility(View.GONE);
+        }
+
         FirebaseRecyclerOptions<Chat> options =
                 new FirebaseRecyclerOptions.Builder<Chat>()
                         .setQuery(FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Chats").child("chats"), Chat.class)
@@ -50,6 +75,25 @@ public class MessengerFragment extends Fragment {
 
 
         return root;
+    }
+
+    private int chatsCount(){
+        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Chats").child("chats")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot snapi : snapshot.getChildren()){
+                            chats_count++;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        return chats_count;
     }
 
     public void checkNetwork(){
