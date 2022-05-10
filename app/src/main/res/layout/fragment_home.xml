@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="@color/main_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".bottomnav.home.HomeFragment">
@@ -15,7 +15,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_posts_recycler"
             android:layout_width="match_parent"
-            android:background="#f4f4f4"
+            android:background="@color/main_background"
             android:layout_height="match_parent"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="No public events or reviews"
+        android:textColor="@color/simple_text"
         android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +51,7 @@
         android:layout_height="wrap_content"
         android:text="Create events in the maps page."
         android:visibility="invisible"
-        android:textColor="#B3000000"
+        android:textColor="@color/simple_text"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

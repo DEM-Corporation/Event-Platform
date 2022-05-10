@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/main_background"
     android:layout_height="match_parent"
     tools:context=".bottomnav.home.HomeFragment">
 
@@ -32,6 +32,7 @@
         android:layout_width="wrap_content"
         android:text="No chats"
         android:textSize="20sp"
+        android:textColor="@color/simple_text"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Create event or register for the event."
         android:visibility="invisible"
-        android:textColor="#B3000000"
+        android:textColor="@color/simple_text"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
