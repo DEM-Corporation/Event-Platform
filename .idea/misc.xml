@@ -42,6 +42,7 @@
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/drawable/sign_up_btn.xml" value="0.3635" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/accept_invite_dialog.xml" value="0.34791666666666665" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_chat.xml" value="0.22" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_comment.xml" value="0.3375" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_create_review.xml" value="0.34791666666666665" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_event_description.xml" value="0.34791666666666665" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_event_private.xml" value="0.3625" />
@@ -55,6 +56,7 @@
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_settings.xml" value="0.3625" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_splash_screen.xml" value="0.29791666666666666" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_start.xml" value="0.25" />
+        <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/activity_users_invitation.xml" value="0.22" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.3625" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/create_event_dialog.xml" value="0.3625" />
         <entry key="..\:/Users/progr/StudioProjects/Event-Platform/app/src/main/res/layout/fragment_home.xml" value="0.3625" />

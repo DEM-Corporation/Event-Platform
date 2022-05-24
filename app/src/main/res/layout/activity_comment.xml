@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,20 +11,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_arrow_back_black_25"
-        android:background="@color/white"
+        android:background="@color/chat_back_btn_background"
         android:padding="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        app:tint="@color/chat_back_btn_color" />
 
     <TextView
         android:id="@+id/name_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000"
+        android:textColor="@color/simple_text"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        tools:text="kjfdkjv"
+        tools:text="comments"
         />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -39,6 +41,7 @@
             android:id="@+id/comments_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white_background"
             />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -51,13 +54,13 @@
         android:layout_height="42dp"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:background="@color/white"
+        android:background="@color/white_background"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:layout_toStartOf="@+id/comment_btn_send"
         android:hint="@string/write_a_comment"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black75" />
+        android:textColor="@color/simple_text"
+        android:textColorHint="@color/simple_text" />
 
     <ImageButton
         android:id="@+id/comment_btn_send"
@@ -67,6 +70,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@color/white"
+        android:background="@color/white_background"
         android:src="@drawable/ic_baseline_send_24"/>
 </RelativeLayout>

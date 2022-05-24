@@ -4,11 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/white_background"
     android:orientation="vertical"
     tools:context=".activities.UsersInvitationActivity">
-
-
 
     <ImageButton
         android:id="@+id/back_from_event_desc_btn"
@@ -16,6 +14,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_arrow_back_24"
         android:background="@drawable/back_btn_background"
+        app:tint="@color/back_btn_icon_color"
         android:padding="10dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="32dp"/>
@@ -26,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="INVITE USERS"
         android:fontFamily="@font/ubuntu_medium"
-        android:textColor="#000"
+        android:textColor="@color/simple_text"
         android:textSize="26sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp" />
@@ -36,21 +35,23 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_centerInParent="true">
+
         <EditText
             android:id="@+id/invitation_link_txt"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginEnd="20dp"
-            android:textColor="@color/black"
             android:layout_toStartOf="@+id/btn_share_link"
             android:background="@drawable/edit_txt_shape"
             android:hint="Invitation link"
             android:inputType="time"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="10dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="10dp"
-            android:textColorHint="@color/black75" />
+            android:textColor="@color/simple_text"
+            android:textColorHint="@color/simple_text" />
+
         <ImageButton
             android:id="@+id/btn_share_link"
             android:layout_width="50dp"
@@ -59,7 +60,8 @@
             android:layout_marginEnd="0dp"
             android:background="@drawable/sign_up_btn"
             android:padding="15dp"
-            android:src="@drawable/ic_share_white" />
+            android:src="@drawable/ic_share_white"
+            app:tint="@color/back_btn_icon_color" />
     </RelativeLayout>
 
     <Button
@@ -73,7 +75,7 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/sign_up_btn"
         android:text="CREATE EVENT"
-        android:textColor="@color/white"
+        android:textColor="@color/white_background"
         android:textSize="18sp" />
 
 </RelativeLayout>
