@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/search_view_map"
+    android:layout_width="340dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/search_view_map_fragment_shape"
+    android:orientation="vertical"
+    app:layout_constraintHeight_max="470dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/events_map_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="55dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/gray" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/events_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"/>
+
+</LinearLayout>

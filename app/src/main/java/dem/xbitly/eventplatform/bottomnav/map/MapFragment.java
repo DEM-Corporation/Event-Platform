@@ -16,19 +16,28 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -47,15 +56,20 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import dem.xbitly.eventplatform.Event.Event;
+import dem.xbitly.eventplatform.Event.EventsAdapter;
+import dem.xbitly.eventplatform.activities.MembersActivity;
 import dem.xbitly.eventplatform.bottomsheet.BottomSheetEventDialog;
 import dem.xbitly.eventplatform.activities.InternetErrorConnectionActivity;
 import dem.xbitly.eventplatform.activities.PrivateEventActivity;
@@ -76,6 +90,18 @@ public class MapFragment extends Fragment implements LocationListener {
     private boolean e=true;
     private boolean a=true;
 
+    private FloatingActionButton open_search_view_btn;
+    private LinearLayout search_view;
+    private RecyclerView events_rv;
+    private SearchView events_search;
+
+    private EventsAdapter eventsAdapter;
+
+    private ArrayList<Event> eventsList = new ArrayList<>();
+
+    private FrameLayout search_fragment;
+
+    boolean is_search_opened = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -92,6 +118,18 @@ public class MapFragment extends Fragment implements LocationListener {
                     Manifest.permission.ACCESS_FINE_LOCATION
             }, 100);
         }
+
+        open_search_view_btn = root.findViewById(R.id.search_btn);
+        search_fragment = root.findViewById(R.id.search_fragment);
+//        search_view = root.findViewById(R.id.search_view_map);
+//        events_rv = root.findViewById(R.id.events_rv);
+//        events_search = root.findViewById(R.id.events_map_search_view);
+
+//        if (search_view.getVisibility()==View.VISIBLE){
+//            open_search_view_btn.setImageResource(R.drawable.ic_baseline_close);
+//        }else{
+//            open_search_view_btn.setImageResource(R.drawable.ic_icon_find);
+//        }
 
         create_event = root.findViewById(R.id.create_event_btn);
         create_event.setOnClickListener(new View.OnClickListener() { //кнопка создания мероприятия
@@ -132,6 +170,8 @@ public class MapFragment extends Fragment implements LocationListener {
             }
         });
 
+        open_search_view_btn.setImageResource(R.drawable.ic_icon_find);
+
         return root;
     }
 
@@ -167,6 +207,9 @@ public class MapFragment extends Fragment implements LocationListener {
                                                             .icon(getBitmapFromVectorDrawable(context, R.drawable.ic_location_marker_green))).setTag(num);
                                                     googleMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
 
+                                                    String event_name = snapshot.child("name").getValue().toString();
+                                                    String date = snapshot.child("date").getValue().toString();
+                                                    eventsList.add(new Event(event_name, true, date, longitude, latitude));
                                                 }
 
                                                 @Override
@@ -187,6 +230,9 @@ public class MapFragment extends Fragment implements LocationListener {
                                                             .icon(getBitmapFromVectorDrawable(context, R.drawable.ic_location_marker))).setTag(num);
                                                     googleMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
 
+                                                    String event_name = snapshot.child("name").getValue().toString();
+                                                    String date = snapshot.child("date").getValue().toString();
+                                                    eventsList.add(new Event(event_name, false, date, longitude, latitude));
                                                 }
 
                                                 @Override
@@ -203,6 +249,27 @@ public class MapFragment extends Fragment implements LocationListener {
                     }catch (Exception e){
 
                     }
+
+                    open_search_view_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                            if (is_search_opened){
+                                ft.remove(getParentFragmentManager().findFragmentById(R.id.search_fragment));
+                                ft.commit();
+                                Log.d("map_debug", "lll");
+                                open_search_view_btn.setImageResource(R.drawable.ic_icon_find);
+                                is_search_opened = false;
+                            }else{
+                                ft.replace(R.id.search_fragment, new MapSearchFragment(eventsList, googleMap));
+                                ft.commit();
+                                Log.d("map_debug", "hhh");
+                                open_search_view_btn.setImageResource(R.drawable.ic_baseline_close);
+                                is_search_opened = true;
+                            }
+                        }
+                    });
+
 
                     googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() { //при нажатии на маркер какого-либо мероприятия показываем информацию про него
                         @Override
@@ -310,10 +377,6 @@ public class MapFragment extends Fragment implements LocationListener {
                 }
             });
 
-
-
-
-
         }
     };
 
@@ -390,4 +453,6 @@ public class MapFragment extends Fragment implements LocationListener {
     public void onProviderDisabled(@NonNull String provider) {
 
     }
+
+
 }

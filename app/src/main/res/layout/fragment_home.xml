@@ -16,6 +16,7 @@
             android:id="@+id/home_posts_recycler"
             android:layout_width="match_parent"
             android:background="@color/main_background"
+            android:paddingTop="5dp"
             android:layout_height="match_parent"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

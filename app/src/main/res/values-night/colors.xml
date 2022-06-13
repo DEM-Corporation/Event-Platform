@@ -5,7 +5,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black75">#BF000000</color>
     <color name="black90">#E6000000</color>
-    <color name="gray">#CACACA</color>
     <color name="red">#FF0000</color>
     <color name="blue">#606EED</color>
     <color name="green">#80C17E</color>
@@ -70,5 +69,9 @@
     <color name="bottom_sheet_icons_color"> #fff </color>
 
     <color name="create_event_open_dialog_btn_color">#6571D6</color>
+
+    <color name="gray"> #fff </color>
+
+    <color name="gray2">#fff</color>
 
 </resources>
