@@ -61,9 +61,8 @@ public class PublicEventActivity extends AppCompatActivity {
 
     private int event_number;//номер евента
 
-    //checking if event is not outdated
-    private boolean is_time_ok = true;
-    private boolean is_date_ok = true;
+    private Date time;
+    private Date date;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -111,9 +110,14 @@ public class PublicEventActivity extends AppCompatActivity {
                 FancyToast.makeText(getApplicationContext(),"Fields cannot be empty",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
             }
             else {
-                if (!is_time_ok || !is_date_ok){
-                    FancyToast.makeText(getApplicationContext(), "Event is outdated, check time and date", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
-                }else{
+                Date nd = new Date();
+                if (nd.after(date)){
+                    FancyToast.makeText(getApplicationContext(),"Event is outdated, check time and date",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
+                }
+                else if (nd == date && nd.after(time)){
+                    FancyToast.makeText(getApplicationContext(),"Event is outdated, check time and date",FancyToast.LENGTH_LONG,FancyToast.ERROR, false).show();
+                }
+                else{
 
                     if (binding.eventMaxAmount.getText().toString().equals("Infinity")) {
                         event_info.put("max_amount", "0");
@@ -205,17 +209,12 @@ public class PublicEventActivity extends AppCompatActivity {
             dateAndTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
             dateAndTime.set(Calendar.MINUTE, minute);
             SimpleDateFormat formatForTime = new SimpleDateFormat("hh:mm");
-            Date date = new Date();
-            date.setHours(hourOfDay);
-            date.setMinutes(minute);
-            event_info.put("time", formatForTime.format(date));
+            time = new Date();
+            time.setHours(hourOfDay);
+            time.setMinutes(minute);
+            event_info.put("time", formatForTime.format(time));
 
-            //check if event is outdated
-            if (new Date().after(date)){
-                is_time_ok = false;
-            }
-
-            binding.eventTime.setText(formatForTime.format(date));
+            binding.eventTime.setText(formatForTime.format(time));
         }
     };
 
@@ -227,13 +226,8 @@ public class PublicEventActivity extends AppCompatActivity {
             dateAndTime.set(Calendar.MONTH, monthOfYear);
             dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             SimpleDateFormat formatForDate = new SimpleDateFormat("dd.MM.yyyy");
-            Date date = new Date(year-1900, monthOfYear, dayOfMonth);
+            date = new Date(year-1900, monthOfYear, dayOfMonth);
             event_info.put("date", formatForDate.format(date));
-
-            //check if event is outdated
-            if (new Date().after(date)){
-                is_date_ok = false;
-            }
 
             binding.eventDate.setText(formatForDate.format(date));
         }

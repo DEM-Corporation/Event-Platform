@@ -48,20 +48,6 @@ public class MapSearchFragment extends Fragment {
         events_rv = view.findViewById(R.id.events_rv);
         events_search = view.findViewById(R.id.events_map_search_view);
 
-        // for tests
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
-        eventsList.add(new Event("hellooooo", false, "14.06.2022", 1, 1));
 
         eventsAdapter = new EventsAdapter(eventsList, googleMap);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());

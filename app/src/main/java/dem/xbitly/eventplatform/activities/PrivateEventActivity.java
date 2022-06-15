@@ -23,8 +23,12 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,10 +38,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.shashank.sony.fancytoastlib.FancyToast;
-import com.sucho.placepicker.AddressData;
-import com.sucho.placepicker.Constants;
-import com.sucho.placepicker.MapType;
-import com.sucho.placepicker.PlacePicker;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -48,6 +49,8 @@ import java.util.Objects;
 import dem.xbitly.eventplatform.R;
 import dem.xbitly.eventplatform.databinding.ActivityEventPrivateBinding;
 import dem.xbitly.eventplatform.network.NetworkManager;
+import ru.semkin.yandexplacepicker.PlaceParcelable;
+import ru.semkin.yandexplacepicker.YandexPlacePicker;
 
 public class PrivateEventActivity extends AppCompatActivity {
 
@@ -72,9 +75,8 @@ public class PrivateEventActivity extends AppCompatActivity {
 
     boolean a = true;
 
-    //checking if event is not outdated
-    private boolean is_time_ok = true;
-    private boolean is_date_ok = true;
+    private Date time;
+    private Date date;
 
 
     @Override
@@ -127,9 +129,14 @@ public class PrivateEventActivity extends AppCompatActivity {
                     || binding.eventDate.getText().toString().isEmpty()) { //нельзя, чтобы поля пустыми были
                 FancyToast.makeText(getApplicationContext(),"Fields cannot be empty",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
             } else {
-                if (!is_time_ok || !is_date_ok){
-                    FancyToast.makeText(getApplicationContext(), "Event is outdated, check time and date", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
-                }else{
+                Date nd = new Date();
+                if (nd.after(date)){
+                    FancyToast.makeText(getApplicationContext(),"Event is outdated, check time and date",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
+                }
+                else if (nd == date && nd.after(time)){
+                    FancyToast.makeText(getApplicationContext(),"Event is outdated, check time and date",FancyToast.LENGTH_LONG,FancyToast.ERROR, false).show();
+                }
+                else{
                     //если все хорошо, то создаем reference для этого мероприятия
                     ref.addValueEventListener(new ValueEventListener(){
 
@@ -142,15 +149,10 @@ public class PrivateEventActivity extends AppCompatActivity {
                                     ref.setValue(event_info).addOnCompleteListener(task -> {
                                         if (task.isSuccessful()){
 
-                                            Intent intent = new PlacePicker.IntentBuilder()
-                                                    .setLatLong(latitude, longitude)
-                                                    .showLatLong(true)
-                                                    .setMapType(MapType.NORMAL)
-                                                    .setFabColor(R.color.blue)
-                                                    .setMarkerDrawable(R.drawable.ic_location_marker_green)
-                                                    .build(PrivateEventActivity.this);
-
-                                            startActivityForResult(intent, Constants.PLACE_PICKER_REQUEST);
+                                            YandexPlacePicker.IntentBuilder builder = new YandexPlacePicker.IntentBuilder()
+                                                    .setYandexMapsKey("89430e9a-570b-4942-bd42-dea53319a059");
+                                            Intent placeINtent = builder.build(PrivateEventActivity.this);
+                                            startActivityForResult(placeINtent, 1);
                                         }else {
                                             FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
                                         }
@@ -165,16 +167,10 @@ public class PrivateEventActivity extends AppCompatActivity {
                                     ref = database.getReference("PrivateEvents").child(String.valueOf(event_number));
                                     ref.setValue(event_info).addOnCompleteListener(task -> {
                                         if (task.isSuccessful()){
-
-                                            Intent intent = new PlacePicker.IntentBuilder()
-                                                    .setLatLong(latitude, longitude)
-                                                    .showLatLong(true)
-                                                    .setMapType(MapType.NORMAL)
-                                                    .setFabColor(R.color.blue)
-                                                    .setMarkerDrawable(R.drawable.ic_location_marker_green)
-                                                    .build(PrivateEventActivity.this);
-
-                                            startActivityForResult(intent, Constants.PLACE_PICKER_REQUEST);
+                                            YandexPlacePicker.IntentBuilder builder = new YandexPlacePicker.IntentBuilder()
+                                                    .setYandexMapsKey("89430e9a-570b-4942-bd42-dea53319a059");
+                                            Intent placeINtent = builder.build(PrivateEventActivity.this);
+                                            startActivityForResult(placeINtent, 1);
                                         }else {
                                             FancyToast.makeText(getApplicationContext(),"Some errors",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
                                         }
@@ -222,17 +218,12 @@ public class PrivateEventActivity extends AppCompatActivity {
             dateAndTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
             dateAndTime.set(Calendar.MINUTE, minute);
             SimpleDateFormat formatForTime = new SimpleDateFormat("hh:mm");
-            Date date = new Date();
-            date.setHours(hourOfDay);
-            date.setMinutes(minute);
-            event_info.put("time", formatForTime.format(date));
+            time = new Date();
+            time.setHours(hourOfDay);
+            time.setMinutes(minute);
+            event_info.put("time", formatForTime.format(time));
 
-            //check if event is outdated
-            if (new Date().after(date)){
-                is_time_ok = false;
-            }
-
-            binding.eventTime.setText(formatForTime.format(date));
+            binding.eventTime.setText(formatForTime.format(time));
         }
     };
 
@@ -244,13 +235,8 @@ public class PrivateEventActivity extends AppCompatActivity {
             dateAndTime.set(Calendar.MONTH, monthOfYear);
             dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             SimpleDateFormat formatForDate = new SimpleDateFormat("dd.MM.yyyy");
-            Date date = new Date(year-1900, monthOfYear, dayOfMonth);
+            date = new Date(year-1900, monthOfYear, dayOfMonth);
             event_info.put("date", formatForDate.format(date));
-
-            //check if event is outdated
-            if (new Date().after(date)){
-                is_date_ok = false;
-            }
 
             binding.eventDate.setText(formatForDate.format(date));
         }
@@ -258,11 +244,12 @@ public class PrivateEventActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == Constants.PLACE_PICKER_REQUEST) {
-            if (resultCode == Activity.RESULT_OK && data != null) {
-                AddressData addressData = data.getParcelableExtra(Constants.ADDRESS_INTENT);
-                double latitude = addressData.getLatitude();
-                double longitude = addressData.getLongitude();
+        if (requestCode == 1){
+            if (data!=null){
+                PlaceParcelable place = YandexPlacePicker.getPlace(data);
+                double latitude = place.getPoint().getLatitude();
+                double longitude = place.getPoint().getLongitude();
+
                 ref.child("adress").child("latitude").setValue(latitude);
                 ref.child("adress").child("longitude").setValue(longitude);
                 ref.child("go").setValue("," + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());

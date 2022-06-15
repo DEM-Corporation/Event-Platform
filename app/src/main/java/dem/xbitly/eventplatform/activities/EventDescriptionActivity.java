@@ -18,8 +18,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,10 +32,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.shashank.sony.fancytoastlib.FancyToast;
-import com.sucho.placepicker.AddressData;
-import com.sucho.placepicker.Constants;
-import com.sucho.placepicker.MapType;
-import com.sucho.placepicker.PlacePicker;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,6 +41,8 @@ import java.util.Objects;
 import dem.xbitly.eventplatform.R;
 import dem.xbitly.eventplatform.databinding.ActivityEventDescriptionBinding;
 import dem.xbitly.eventplatform.network.NetworkManager;
+import ru.semkin.yandexplacepicker.PlaceParcelable;
+import ru.semkin.yandexplacepicker.YandexPlacePicker;
 
 public class EventDescriptionActivity extends AppCompatActivity {
 
@@ -152,15 +155,31 @@ public class EventDescriptionActivity extends AppCompatActivity {
                     }
                 });
 
-                Intent intent = new PlacePicker.IntentBuilder()
-                        .setLatLong(latitude, longitude)
-                        .showLatLong(true)
-                        .setMapType(MapType.NORMAL)
-                        .setFabColor(R.color.blue)
-                        .setMarkerDrawable(R.drawable.ic_location_marker)
-                        .build(EventDescriptionActivity.this);
+//                Intent intent = new PlacePicker.IntentBuilder()
+//                        .setLatLong(latitude, longitude)
+//                        .showLatLong(true)
+//                        .setMapType(MapType.NORMAL)
+//                        .setFabColor(R.color.blue)
+//                        .setPlaceSearchBar(true, "AIzaSyBfUupkwJjDgpsFr1zcLEi7vmCH8x5Bk_8")
+//                        .setMarkerDrawable(R.drawable.ic_location_marker)
+//                        .build(EventDescriptionActivity.this);
+//
+//                startActivityForResult(intent, Constants.PLACE_PICKER_REQUEST);
 
-                startActivityForResult(intent, Constants.PLACE_PICKER_REQUEST);
+//                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+//                try {
+//                    startActivityForResult(builder.build(EventDescriptionActivity.this), 1);
+//                } catch (GooglePlayServicesRepairableException e) {
+//                    e.printStackTrace();
+//                } catch (GooglePlayServicesNotAvailableException e) {
+//                    e.printStackTrace();
+//                }
+
+                YandexPlacePicker.IntentBuilder builder = new YandexPlacePicker.IntentBuilder()
+                        .setYandexMapsKey("89430e9a-570b-4942-bd42-dea53319a059");
+                Intent placeINtent = builder.build(EventDescriptionActivity.this);
+                startActivityForResult(placeINtent, 1);
+
 
             }else{
                 FancyToast.makeText(getApplicationContext(),"Fields cannot be empty",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
@@ -170,11 +189,12 @@ public class EventDescriptionActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == Constants.PLACE_PICKER_REQUEST) {
-            if (resultCode == Activity.RESULT_OK && data != null) {
-                AddressData addressData = data.getParcelableExtra(Constants.ADDRESS_INTENT);
-                double latitude = addressData.getLatitude();
-                double longitude = addressData.getLongitude();
+        if (requestCode == 1){
+            if (data!=null){
+                PlaceParcelable place = YandexPlacePicker.getPlace(data);
+                double latitude = place.getPoint().getLatitude();
+                double longitude = place.getPoint().getLongitude();
+
                 FirebaseDatabase.getInstance().getReference("PublicEvents")
                         .child(Integer.toString(getIntent().getIntExtra("eventID", 0)))
                         .child("adress").child("latitude").setValue(latitude);

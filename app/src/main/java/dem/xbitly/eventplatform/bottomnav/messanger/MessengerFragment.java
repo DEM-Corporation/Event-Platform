@@ -39,11 +39,13 @@ public class MessengerFragment extends Fragment {
 
     private ChatAdapter adapter;
 
-    private int chats_count=0;
+    private long chats_count=0;
 
     private ImageView neutral_face;
     private TextView no_chats_title;
     private TextView no_chats_text;
+
+    private boolean a  = true;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,16 +56,34 @@ public class MessengerFragment extends Fragment {
         no_chats_title = root.findViewById(R.id.no_chats_textview);
         no_chats_text = root.findViewById(R.id.no_chats_textview2);
 
-        if (chatsCount()==0){
-            neutral_face.setVisibility(View.VISIBLE);
-            no_chats_title.setVisibility(View.VISIBLE);
-            no_chats_text.setVisibility(View.VISIBLE);
-            Log.d("chats", "NO CHATS");
-        }else{
-            neutral_face.setVisibility(View.GONE);
-            no_chats_title.setVisibility(View.GONE);
-            no_chats_text.setVisibility(View.GONE);
-        }
+        a = true;
+        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Chats").child("chats")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (a){
+                            chats_count = snapshot.getChildrenCount();
+
+                            if (chats_count==0){
+                                neutral_face.setVisibility(View.VISIBLE);
+                                no_chats_title.setVisibility(View.VISIBLE);
+                                no_chats_text.setVisibility(View.VISIBLE);
+                                Log.d("chats", "chats count: " + chats_count);
+                            }else{
+                                neutral_face.setVisibility(View.GONE);
+                                no_chats_title.setVisibility(View.GONE);
+                                no_chats_text.setVisibility(View.GONE);
+                            }
+
+                            a = false;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
         FirebaseRecyclerOptions<Chat> options =
                 new FirebaseRecyclerOptions.Builder<Chat>()
@@ -75,25 +95,6 @@ public class MessengerFragment extends Fragment {
 
 
         return root;
-    }
-
-    private int chatsCount(){
-        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Chats").child("chats")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot snapi : snapshot.getChildren()){
-                            chats_count++;
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-        return chats_count;
     }
 
     public void checkNetwork(){
