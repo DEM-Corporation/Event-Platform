@@ -33,6 +33,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -91,9 +92,6 @@ public class MapFragment extends Fragment implements LocationListener {
     private boolean a=true;
 
     private FloatingActionButton open_search_view_btn;
-    private LinearLayout search_view;
-    private RecyclerView events_rv;
-    private SearchView events_search;
 
     private EventsAdapter eventsAdapter;
 
@@ -101,7 +99,7 @@ public class MapFragment extends Fragment implements LocationListener {
 
     private FrameLayout search_fragment;
 
-    boolean is_search_opened = false;
+    private FragmentManager fragmentManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -120,16 +118,10 @@ public class MapFragment extends Fragment implements LocationListener {
         }
 
         open_search_view_btn = root.findViewById(R.id.search_btn);
+        open_search_view_btn.setTag("find");
         search_fragment = root.findViewById(R.id.search_fragment);
-//        search_view = root.findViewById(R.id.search_view_map);
-//        events_rv = root.findViewById(R.id.events_rv);
-//        events_search = root.findViewById(R.id.events_map_search_view);
 
-//        if (search_view.getVisibility()==View.VISIBLE){
-//            open_search_view_btn.setImageResource(R.drawable.ic_baseline_close);
-//        }else{
-//            open_search_view_btn.setImageResource(R.drawable.ic_icon_find);
-//        }
+        fragmentManager = getParentFragmentManager();
 
         create_event = root.findViewById(R.id.create_event_btn);
         create_event.setOnClickListener(new View.OnClickListener() { //кнопка создания мероприятия
@@ -253,19 +245,19 @@ public class MapFragment extends Fragment implements LocationListener {
                     open_search_view_btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                            if (is_search_opened){
-                                ft.remove(getParentFragmentManager().findFragmentById(R.id.search_fragment));
+                            FragmentTransaction ft = fragmentManager.beginTransaction();
+
+                            if (open_search_view_btn.getTag().equals("find")){
+                                ft.replace(R.id.search_fragment, new MapSearchFragment(eventsList, googleMap,
+                                        getParentFragmentManager(), open_search_view_btn));
                                 ft.commit();
-                                Log.d("map_debug", "lll");
-                                open_search_view_btn.setImageResource(R.drawable.ic_icon_find);
-                                is_search_opened = false;
-                            }else{
-                                ft.replace(R.id.search_fragment, new MapSearchFragment(eventsList, googleMap));
-                                ft.commit();
-                                Log.d("map_debug", "hhh");
                                 open_search_view_btn.setImageResource(R.drawable.ic_baseline_close);
-                                is_search_opened = true;
+                                open_search_view_btn.setTag("close");
+                            }else{
+                                ft.remove(fragmentManager.findFragmentById(R.id.search_fragment));
+                                ft.commit();
+                                open_search_view_btn.setImageResource(R.drawable.ic_icon_find);
+                                open_search_view_btn.setTag("find");
                             }
                         }
                     });

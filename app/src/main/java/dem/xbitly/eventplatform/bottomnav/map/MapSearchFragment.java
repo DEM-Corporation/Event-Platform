@@ -11,11 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.ArrayList;
@@ -31,10 +33,15 @@ public class MapSearchFragment extends Fragment {
     SearchView events_search;
     GoogleMap googleMap;
     EventsAdapter eventsAdapter;
+    FragmentManager fragmentManager;
+    FloatingActionButton open_search_btn;
 
-    public MapSearchFragment(ArrayList<Event> eventsList, GoogleMap googleMap){
+    public MapSearchFragment(ArrayList<Event> eventsList, GoogleMap googleMap, FragmentManager fragmentManager
+                , FloatingActionButton open_search_btn){
         this.eventsList = eventsList;
         this.googleMap = googleMap;
+        this.fragmentManager = fragmentManager;
+        this.open_search_btn = open_search_btn;
     }
 
     @Nullable
@@ -48,8 +55,7 @@ public class MapSearchFragment extends Fragment {
         events_rv = view.findViewById(R.id.events_rv);
         events_search = view.findViewById(R.id.events_map_search_view);
 
-
-        eventsAdapter = new EventsAdapter(eventsList, googleMap);
+        eventsAdapter = new EventsAdapter(eventsList, googleMap, fragmentManager, open_search_btn);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider_rv));

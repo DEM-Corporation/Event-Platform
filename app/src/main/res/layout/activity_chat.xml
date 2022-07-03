@@ -74,5 +74,5 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/chat_edittxt_background"
-        android:src="@drawable/ic_baseline_send_24"/>
+        android:src="@drawable/ic_baseline_mic_24" />
 </RelativeLayout>

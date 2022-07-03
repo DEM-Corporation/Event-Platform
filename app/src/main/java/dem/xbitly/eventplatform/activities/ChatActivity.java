@@ -11,7 +11,9 @@ import android.location.Geocoder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
@@ -101,6 +103,27 @@ public class ChatActivity extends AppCompatActivity {
             privacy = true;
         }
 
+        binding.messageEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 0){
+                    binding.messageBtnSend.setImageResource(R.drawable.ic_baseline_mic_24);
+                }else{
+                    binding.messageBtnSend.setImageResource(R.drawable.ic_baseline_send_24);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
 
         binding.messageBtnSend.setOnClickListener(v -> {
             if (binding.messageEdit.getText().toString().length() != 0){
@@ -129,10 +152,8 @@ public class ChatActivity extends AppCompatActivity {
                                         binding.messageEdit.setText("");
                                         recView.scrollToPosition(adapter.getItemCount()-1);
                                     }
-
                                 }
                             });
-
                         }
                     }
                 });

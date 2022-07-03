@@ -7,11 +7,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -23,11 +26,15 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsHolder>{
 
     ArrayList<Event> eventsList;
     GoogleMap googleMap;
+    FragmentManager fragmentManager;
+    FloatingActionButton open_search_btn;
 
-    public EventsAdapter (ArrayList<Event> eventsList, GoogleMap googleMap){
+    public EventsAdapter (ArrayList<Event> eventsList, GoogleMap googleMap, FragmentManager fragmentManager
+                    , FloatingActionButton open_search_btn){
         this.eventsList = eventsList;
         this.googleMap = googleMap;
-        Log.d("map_debug", "constructor, eventslist size: " + eventsList.size());
+        this.fragmentManager = fragmentManager;
+        this.open_search_btn = open_search_btn;
     }
 
     public void filterList (ArrayList<Event> filteredEventsList){
@@ -53,9 +60,17 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //dismissing searchview fragment
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.search_fragment));
+                fragmentTransaction.commit();
+
+                //changing resourse of open_search_btn
+                open_search_btn.setImageResource(R.drawable.ic_icon_find);
+                open_search_btn.setTag("find");
+
                 LatLng m = new LatLng(eventsList.get(position).getLatitude(), eventsList.get(position).getLongitude());
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(m, 15));
-                //TODO: dismiss searchview before beginning of animating camera
             }
         });
     }
